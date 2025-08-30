@@ -4,3 +4,8 @@
 __pycache__/
 .state/
 .DS_Store
+.env
+.env.*
+.wtt_state/
+__pycache__/
+.DS_Store
