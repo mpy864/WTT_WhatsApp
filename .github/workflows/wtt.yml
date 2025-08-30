@@ -1,21 +1,52 @@
-name: WTT WhatsApp every 6 min
+name: WTT WhatsApp (6 min)
+
 on:
   schedule:
-    - cron: "*/6 * * * *"
+    - cron: "*/6 * * * *"   # every 6 minutes
   workflow_dispatch:
 
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.11" }
-      - run: |
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Restore dedup state (so we don't resend identical messages)
+      - name: Restore state cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .state
+          key: wtt-state-${{ github.run_id }}
+          restore-keys: |
+            wtt-state-
+
+      - name: Install dependencies
+        run: |
           python -V
           pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
-      - name: Send WhatsApp
+
+      # Optional: preview in logs (doesn't send to WhatsApp)
+      - name: Preview (no send)
+        run: |
+          python - <<'PY'
+          import os, main
+          print("Excel present:", os.path.exists("TT_Events_2021-2025.xlsx"))
+          eids = main.get_latest_completed_event_ids()
+          print("Event IDs:", eids)
+          if eids:
+            print("\n--- Preview ---")
+            print(main.build_india_block(eids[0]))
+          PY
+
+      - name: Run sender
         env:
           TWILIO_ACCOUNT_SID:    ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_AUTH_TOKEN:     ${{ secrets.TWILIO_AUTH_TOKEN }}
@@ -25,3 +56,10 @@ jobs:
           WHATSAPP_TO:           ${{ secrets.WHATSAPP_TO }}
           EVENTS_XLSX:           TT_Events_2021-2025.xlsx
         run: python main.py
+
+      - name: Save state cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .state
+          key: wtt-state-${{ github.run_id }}

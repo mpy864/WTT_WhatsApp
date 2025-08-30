@@ -1,0 +1,9 @@
+# local & secrets
+.env
+.env.*
+.venv
+__pycache__/
+.state/
+
+# macOS cruft
+.DS_Store
