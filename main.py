@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import os, re, sys
-from typing import Any, Dict, List, Optional
+import os, re, sys, hashlib
+from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -12,22 +12,23 @@ from twilio.base.exceptions import TwilioRestException
 # =========================
 # Config / Env
 # =========================
-SCRIPT_VERSION = "no-eid-v7-excel-mandatory"
-
-# Load .env next to this script; DO NOT override env vars (so GitHub Secrets win)
+SCRIPT_VERSION = "no-eid-v8-excel-required-dedupe"
 load_dotenv(dotenv_path=Path(__file__).with_name(".env"), override=False)
 
-# Twilio (prefer API key; fallback to SID+Token)
 ACCOUNT_SID    = os.getenv("TWILIO_ACCOUNT_SID", "")
 AUTH_TOKEN     = os.getenv("TWILIO_AUTH_TOKEN", "")
 API_KEY_SID    = os.getenv("TWILIO_API_KEY_SID", "")
 API_KEY_SECRET = os.getenv("TWILIO_API_KEY_SECRET", "")
-
 FROM_WHATSAPP  = os.getenv("TWILIO_WHATSAPP_FROM", "")
 TO_WHATSAPP    = os.getenv("WHATSAPP_TO", "")
+EVENTS_XLSX    = os.getenv("EVENTS_XLSX", "TT_Events_2021-2025.xlsx")
 
-# Mandatory Excel (EventId → {EventType, Country})
-EVENTS_XLSX = os.getenv("EVENTS_XLSX", "TT_Events_2021-2025.xlsx")
+# Optional override: set ALWAYS_SEND=true to force sends even if unchanged
+ALWAYS_SEND    = os.getenv("ALWAYS_SEND", "false").strip().lower() == "true"
+
+# Persisted state (for de-duplication across runs)
+STATE_DIR  = Path(__file__).resolve().parent / ".state"
+STATE_FILE = STATE_DIR / "last_hash.txt"
 
 # =========================
 # WTT endpoints
@@ -269,10 +270,10 @@ def build_header_strict(eid: str, event_idx: Dict[str, Dict[str, str]]) -> str:
     return f"*{' | '.join(parts)}*"
 
 # =========================
-# Build message for one event (India-only)
+# Build message for one event (India-only) → (text, indian_count)
 # =========================
-def build_india_block(eid: str, event_idx: Dict[str, Dict[str, str]]) -> str:
-    header = build_header_strict(eid, event_idx)  # raises if missing
+def build_india_block(eid: str, event_idx: Dict[str, Dict[str, str]]) -> Tuple[str, int]:
+    header = build_header_strict(eid, event_idx)
     payload = get_payload_static_or_live(eid)
     matches = parse_matches(payload)
 
@@ -285,7 +286,7 @@ def build_india_block(eid: str, event_idx: Dict[str, Dict[str, str]]) -> str:
 
     if not india:
         lines.append("(No Indian matches found)")
-        return "\n".join(lines)
+        return "\n".join(lines), 0
 
     def flip_overall(s: str) -> str:
         m = re.match(r"\s*(\d+)\s*[-:]\s*(\d+)\s*$", s or "")
@@ -300,10 +301,8 @@ def build_india_block(eid: str, event_idx: Dict[str, Dict[str, str]]) -> str:
         return ",".join(out)
 
     for m in india:
-        # Row 2
         lines.append(f"{m['SubEventName']} {m['Round']}".strip())
 
-        # Row 3
         ind1 = _has_ind(m["Comp1_Nation"])
         comp_ind = m["Comp1"] if ind1 else m["Comp2"]
         opp      = m["Comp2"] if ind1 else m["Comp1"]
@@ -323,7 +322,7 @@ def build_india_block(eid: str, event_idx: Dict[str, Dict[str, str]]) -> str:
         lines.append(f"{comp_ind} {phr} ({overall}) ({games})")
         lines.append("")
 
-    return "\n".join(lines).rstrip()
+    return "\n".join(lines).rstrip(), len(india)
 
 # =========================
 # Main
@@ -344,16 +343,18 @@ def main():
         print("No completed events.")
         sys.exit(0)
 
-    # Ensure all EventIds present in Excel
     missing = [eid for eid in eids if eid not in event_idx]
     if missing:
         print(f"ERROR: EventIds not found in Excel {EVENTS_XLSX}: {', '.join(missing)}")
         sys.exit(3)
 
     blocks: List[str] = []
+    total_indian = 0
     for eid in eids:
         try:
-            blocks.append(build_india_block(eid, event_idx))
+            block, count = build_india_block(eid, event_idx)
+            total_indian += count
+            blocks.append(block)
         except Exception as e:
             print(f"ERROR building block for {eid}: {e}")
             sys.exit(4)
@@ -362,8 +363,24 @@ def main():
     msg = "\n".join(blocks).strip()
     print("==== MESSAGE PREVIEW ====\n" + msg + "\n=========================")
 
+    # 1) Skip if there are no Indian matches at all
+    if total_indian == 0:
+        print("No Indian results. Skipping WhatsApp.")
+        sys.exit(0)
+
+    # 2) De-duplication via content hash
+    msg_hash = hashlib.sha256(msg.encode("utf-8")).hexdigest()
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    if not ALWAYS_SEND and STATE_FILE.exists():
+        last = STATE_FILE.read_text().strip()
+        if last == msg_hash:
+            print("No change since last send. Skipping WhatsApp.")
+            sys.exit(0)
+
+    # Send
     sid = send_whatsapp(msg)
     if sid:
+        STATE_FILE.write_text(msg_hash)
         print("Sent via Twilio SID:", sid)
 
 if __name__ == "__main__":
