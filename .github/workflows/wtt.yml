@@ -1,12 +1,21 @@
 name: WTT WhatsApp every 6 min
+
 on:
   schedule:
-    - cron: "*/6 * * * *"     # every 6 minutes
-  workflow_dispatch:           # allow manual run
+    - cron: "*/6 * * * *"    # every 6 minutes
+  workflow_dispatch:
+
+# Least-privileged token + no overlapping runs
+permissions:
+  contents: read
+concurrency:
+  group: wtt-whatsapp
+  cancel-in-progress: true
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -15,6 +24,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install deps
         run: |
@@ -22,13 +32,17 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Optional: quick sanity check that the Excel file is present
+      - name: Verify Excel present
+        run: ls -l TT_Events_2021-2025.xlsx
+
       - name: Run script
         env:
-          # from GitHub → Settings → Secrets and variables → Actions (add these there)
+          # Set these in: Repo → Settings → Secrets and variables → Actions → New repository secret
           TWILIO_ACCOUNT_SID:    ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_AUTH_TOKEN:     ${{ secrets.TWILIO_AUTH_TOKEN }}
-          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}
-          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
+          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}       # optional; leave blank if unused
+          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}     # optional; leave blank if unused
           TWILIO_WHATSAPP_FROM:  ${{ secrets.TWILIO_WHATSAPP_FROM }}
           WHATSAPP_TO:           ${{ secrets.WHATSAPP_TO }}
           EVENTS_XLSX:           TT_Events_2021-2025.xlsx
