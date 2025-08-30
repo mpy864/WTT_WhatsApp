@@ -1,0 +1,35 @@
+name: WTT WhatsApp every 6 min
+on:
+  schedule:
+    - cron: "*/6 * * * *"     # every 6 minutes
+  workflow_dispatch:           # allow manual run
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -V
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          # from GitHub → Settings → Secrets and variables → Actions (add these there)
+          TWILIO_ACCOUNT_SID:    ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN:     ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}
+          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
+          TWILIO_WHATSAPP_FROM:  ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          WHATSAPP_TO:           ${{ secrets.WHATSAPP_TO }}
+          EVENTS_XLSX:           TT_Events_2021-2025.xlsx
+        run: python main.py
