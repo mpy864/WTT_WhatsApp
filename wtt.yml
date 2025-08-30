@@ -1,0 +1,105 @@
+name: WTT WhatsApp every 10 mins
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Upgrade pip and install deps
+        run: |
+          python -V
+          pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
+      - name: Debug: repo & commit
+        run: |
+          pwd
+          git remote -v
+          git branch --show-current
+          git log -1 --oneline
+          ls -la
+
+      - name: Debug: script version & Excel availability
+        run: |
+          python - <<'PY'
+          import os, pathlib, pandas as pd
+          import main
+          print("SCRIPT_VERSION (from main.py):", getattr(main, "VERSION_TAG", "<missing>"))
+          print("EVENTS_XLSX =", main.EVENTS_XLSX)
+          if main.EVENTS_XLSX:
+              p = pathlib.Path(main.EVENTS_XLSX)
+              print("Excel exists?", p.exists())
+              if p.exists():
+                  try:
+                      df = pd.read_excel(p, nrows=1)
+                      print("Excel headers:", list(df.columns))
+                  except Exception as e:
+                      print("Excel read failed:", e)
+          else:
+              print("EVENTS_XLSX env empty (API fallback only)")
+          # Quick header preview for a single ID to prove header logic:
+          try:
+              print("Header preview for 3028:")
+              block = main.build_india_block("3028")
+              print(block.splitlines()[0] if block else "<no block>")
+          except Exception as e:
+              print("Header preview failed:", e)
+          PY
+
+      - name: Show repo files (debug)
+        run: |
+          pwd
+          ls -la
+          echo "EVENTS_XLSX (env): ${EVENTS_XLSX:-<empty>}"
+
+      # Preview block and confirm Excel presence (safe debug)
+      - name: Build message only (no send)
+        env:
+          EVENTS_XLSX: TT_Events_2021-2025.xlsx   # remove if you don't commit Excel
+          MAX_SENDS_PER_DAY: "0"                  # don't send from this step
+        run: |
+          python - <<'PY'
+          import os, pathlib, pandas as pd
+          import main
+          print("EVENTS_XLSX seen:", os.environ.get("EVENTS_XLSX"))
+          fn = os.environ.get("EVENTS_XLSX")
+          if fn:
+            p = pathlib.Path(fn)
+            print("Excel exists?:", p.exists())
+            if p.exists():
+              try:
+                df = pd.read_excel(p, nrows=1)
+                print("Excel headers:", list(df.columns))
+              except Exception as e:
+                print("Excel read failed:", e)
+          eids = main.get_latest_completed_event_ids()
+          print("Event IDs from API:", eids)
+          if eids:
+            print("\n--- Block preview ---")
+            print(main.build_india_block(eids[0]))
+          print("\nBuild OK")
+          PY
+
+      - name: Send WhatsApp (Twilio)
+        env:
+          TWILIO_ACCOUNT_SID:    ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN:     ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}
+          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
+          TWILIO_WHATSAPP_FROM:  ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          WHATSAPP_TO:           ${{ secrets.WHATSAPP_TO }}
+          ALWAYS_SEND:           "false"
+          MAX_SENDS_PER_DAY:     "8"
+          EVENTS_XLSX:           TT_Events_2021-2025.xlsx   # remove if you don't commit Excel
+        run: python main.py
