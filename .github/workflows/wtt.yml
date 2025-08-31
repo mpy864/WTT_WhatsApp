@@ -5,9 +5,9 @@ on:
     - cron: "*/6 * * * *"    # every 6 minutes
   workflow_dispatch:
 
-# Least-privileged token + no overlapping runs
 permissions:
   contents: read
+
 concurrency:
   group: wtt-whatsapp
   cancel-in-progress: true
@@ -32,18 +32,86 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Optional: quick sanity check that the Excel file is present
+      # Restore de-dupe state from previous runs
+      - name: Restore .state cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: .state
+          key: wtt-last-hash-${{ github.run_id }}
+          restore-keys: |
+            wtt-last-hash-
+
+      # Quick sanity checks
       - name: Verify Excel present
         run: ls -l TT_Events_2021-2025.xlsx
 
+      - name: Show revision & script version
+        run: |
+          git log -1 --oneline
+          awk '/SCRIPT_VERSION/{print NR": "$0}' main.py || true
+          (md5sum main.py TT_Events_2021-2025.xlsx 2>/dev/null) || (shasum main.py TT_Events_2021-2025.xlsx 2>/dev/null)
+
+      - name: Verify Excel & header (no send)
+        env:
+          EVENTS_XLSX: TT_Events_2021-2025.xlsx
+        run: |
+          python - <<'PY'
+          import os, pathlib
+          import main
+          print("SCRIPT_VERSION:", getattr(main, "SCRIPT_VERSION", "<none>"))
+          x = pathlib.Path(os.environ["EVENTS_XLSX"])
+          print("Excel exists?:", x.exists(), "size:", x.stat().st_size if x.exists() else 0)
+          try:
+              idx = main.load_event_idx_strict(str(x))
+              eids = main.get_latest_completed_event_ids()
+              print("API eids:", eids[:3])
+              if eids:
+                  print("Header from Excel:", main.build_header_strict(eids[0], idx))
+          except Exception as e:
+              print("Excel/load error:", e)
+          PY
+
+      - name: Debug auth & inputs (no secrets printed)
+        run: |
+          python - <<'PY'
+          import os
+          mode = "API_KEY" if (os.getenv("TWILIO_API_KEY_SID") and os.getenv("TWILIO_API_KEY_SECRET") and os.getenv("TWILIO_ACCOUNT_SID")) \
+                 else "SID+TOKEN" if (os.getenv("TWILIO_ACCOUNT_SID") and os.getenv("TWILIO_AUTH_TOKEN")) else "MISSING"
+          print("Auth mode:", mode)
+          print("FROM set:", bool(os.getenv("TWILIO_WHATSAPP_FROM")))
+          print("TO set:", bool(os.getenv("WHATSAPP_TO")))
+          print("Excel path:", os.getenv("EVENTS_XLSX", "TT_Events_2021-2025.xlsx"))
+          PY
+
       - name: Run script
         env:
-          # Set these in: Repo → Settings → Secrets and variables → Actions → New repository secret
           TWILIO_ACCOUNT_SID:    ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_AUTH_TOKEN:     ${{ secrets.TWILIO_AUTH_TOKEN }}
-          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}       # optional; leave blank if unused
-          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}     # optional; leave blank if unused
+          TWILIO_API_KEY_SID:    ${{ secrets.TWILIO_API_KEY_SID }}
+          TWILIO_API_KEY_SECRET: ${{ secrets.TWILIO_API_KEY_SECRET }}
           TWILIO_WHATSAPP_FROM:  ${{ secrets.TWILIO_WHATSAPP_FROM }}
           WHATSAPP_TO:           ${{ secrets.WHATSAPP_TO }}
           EVENTS_XLSX:           TT_Events_2021-2025.xlsx
+          # Set to "true" to force a send during testing:
+          ALWAYS_SEND:           "false"
         run: python main.py
+
+      # Read the latest message hash written by the script
+      - name: Read last hash
+        id: lasthash
+        run: |
+          if [ -f .state/last_hash.txt ]; then
+            H=$(tr -d '\n' < .state/last_hash.txt)
+          else
+            H=none
+          fi
+          echo "hash=$H" >> "$GITHUB_OUTPUT"
+
+      # Save updated .state for next run (prefix allows restoring latest)
+      - name: Save .state cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .state
+          key: wtt-last-hash-${{ steps.lasthash.outputs.hash }}
