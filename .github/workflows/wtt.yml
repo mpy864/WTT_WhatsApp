@@ -1,8 +1,8 @@
-name: WTT WhatsApp every 6 min
+name: WTT WhatsApp every 35 min
 
 on:
   schedule:
-    - cron: "*/6 * * * *"    # every 6 minutes
+    - cron: "*/35 * * * *"    # every 35 minutes
   workflow_dispatch:
 
 permissions:
