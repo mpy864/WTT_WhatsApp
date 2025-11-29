@@ -1,0 +1,2756 @@
+[
+    {
+        "EventId": "3001",
+        "EventName": "WTT Youth Contender San Francisco 2025 Presented by Ethos",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2025-01-02T00:00:00",
+        "EndDateTime": "2025-01-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3083",
+        "EventName": "WTT Star Contender Doha 2025",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2025-01-06T00:00:00",
+        "EndDateTime": "2025-01-11T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3002",
+        "EventName": "WTT Youth Contender Linz 2025",
+        "City": "Linz",
+        "Country": "Austria",
+        "StartDateTime": "2025-01-08T00:00:00",
+        "EndDateTime": "2025-01-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3084",
+        "EventName": "WTT Contender Muscat 2025",
+        "City": "Muscat",
+        "Country": "Oman",
+        "StartDateTime": "2025-01-11T00:00:00",
+        "EndDateTime": "2025-01-17T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3003",
+        "EventName": "WTT Youth Contender Tunis 2025",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-01-13T00:00:00",
+        "EndDateTime": "2025-01-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3004",
+        "EventName": "WTT Youth Star Contender Tunis 2025",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-01-17T00:00:00",
+        "EndDateTime": "2025-01-19T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3034",
+        "EventName": "WTT Youth Contender Doha 2025",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2025-01-27T00:00:00",
+        "EndDateTime": "2025-01-30T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3085",
+        "EventName": "Singapore Smash 2025",
+        "City": "Singapore",
+        "Country": "Singapore",
+        "StartDateTime": "2025-01-30T00:00:00",
+        "EndDateTime": "2025-02-09T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3035",
+        "EventName": "WTT Youth Star Contender Doha 2025",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2025-01-31T00:00:00",
+        "EndDateTime": "2025-02-02T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3124",
+        "EventName": "SINGAPORE SMASH 2025 PARA SHOWCASE EVENT",
+        "City": "Singapore",
+        "Country": "Singapore",
+        "StartDateTime": "2025-02-03T00:00:00",
+        "EndDateTime": "2025-02-05T00:00:00",
+        "EventType": "WTT Exhibition"
+    },
+    {
+        "EventId": "3026",
+        "EventName": "WTT Feeder Doha 2025",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2025-02-04T00:00:00",
+        "EndDateTime": "2025-02-08T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3005",
+        "EventName": "Singapore Youth Smash 2025",
+        "City": "Singapore",
+        "Country": "Singapore",
+        "StartDateTime": "2025-02-06T00:00:00",
+        "EndDateTime": "2025-02-09T00:00:00",
+        "EventType": "WTT Youth Smash"
+    },
+    {
+        "EventId": "3020",
+        "EventName": "WTT Feeder D\u00fcsseldorf 2025",
+        "City": "D\u00fcsseldorf",
+        "Country": "Germany",
+        "StartDateTime": "2025-02-11T00:00:00",
+        "EndDateTime": "2025-02-14T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3032",
+        "EventName": "WTT Youth Contender Puerto Princesa 2025",
+        "City": "Puerto Princesa",
+        "Country": "Philippines",
+        "StartDateTime": "2025-02-12T00:00:00",
+        "EndDateTime": "2025-02-15T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3033",
+        "EventName": "WTT Youth Contender Cappadocia 2025",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2025-02-12T00:00:00",
+        "EndDateTime": "2025-02-15T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3115",
+        "EventName": "ITTF-Oceania Cup 2025",
+        "City": " Melbourne",
+        "Country": "Australia",
+        "StartDateTime": "2025-02-15T00:00:00",
+        "EndDateTime": "2025-02-16T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3006",
+        "EventName": "WTT Youth Contender Vila Real 2025",
+        "City": "Vila Real",
+        "Country": "Portugal",
+        "StartDateTime": "2025-02-17T00:00:00",
+        "EndDateTime": "2025-02-20T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3030",
+        "EventName": "WTT Feeder Cappadocia 2025",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2025-02-17T00:00:00",
+        "EndDateTime": "2025-02-21T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3117",
+        "EventName": "ITTF Pan American Cup 2025 presented By J.P. MORGAN",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2025-02-18T00:00:00",
+        "EndDateTime": "2025-02-23T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3122",
+        "EventName": "34th ITTF-ATTU Asian Cup 2025",
+        "City": "Shenzhen",
+        "Country": "China",
+        "StartDateTime": "2025-02-19T00:00:00",
+        "EndDateTime": "2025-02-23T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3116",
+        "EventName": "ITTF African Cup 2025",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-02-25T00:00:00",
+        "EndDateTime": "2025-02-27T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3073",
+        "EventName": "WTT Youth Contender Vadodara 2025 Presented by Parul University",
+        "City": "Vadodara",
+        "Country": "India",
+        "StartDateTime": "2025-02-26T00:00:00",
+        "EndDateTime": "2025-03-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3007",
+        "EventName": "WTT Youth Contender Wladyslawowo 2025",
+        "City": "Wladyslawowo",
+        "Country": "Poland",
+        "StartDateTime": "2025-03-05T00:00:00",
+        "EndDateTime": "2025-03-08T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3171",
+        "EventName": "2025 ITTF \u2013 CONSUTEME Circle 10",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2025-03-09T00:00:00",
+        "EndDateTime": "2025-03-11T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3008",
+        "EventName": "WTT Youth Contender Berlin 2025 Presented by Seeger",
+        "City": "Berlin",
+        "Country": "Germany",
+        "StartDateTime": "2025-03-10T00:00:00",
+        "EndDateTime": "2025-03-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3009",
+        "EventName": "WTT Youth Contender Havirov 2025",
+        "City": "Havirov",
+        "Country": "Czechia",
+        "StartDateTime": "2025-03-10T00:00:00",
+        "EndDateTime": "2025-03-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3086",
+        "EventName": "WTT Champions Chongqing 2025 Presented by AITO",
+        "City": "Chongqing",
+        "Country": "China",
+        "StartDateTime": "2025-03-11T00:00:00",
+        "EndDateTime": "2025-03-16T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3113",
+        "EventName": "WTT Youth Contender Asunci\u00f3n 2025",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2025-03-13T00:00:00",
+        "EndDateTime": "2025-03-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3120",
+        "EventName": "WTT Youth Contender Buenos Aires 2025",
+        "City": "Buenos Aires",
+        "Country": "Argentina",
+        "StartDateTime": "2025-03-18T00:00:00",
+        "EndDateTime": "2025-03-21T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3037",
+        "EventName": "WTT Youth Contender Gangneung 2025 Presented by SeAH",
+        "City": "Gangneung",
+        "Country": "Korea Republic",
+        "StartDateTime": "2025-03-19T00:00:00",
+        "EndDateTime": "2025-03-22T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3152",
+        "EventName": "South American U11 & U13 Championships 2025",
+        "City": "Cuenca",
+        "Country": "Ecuador",
+        "StartDateTime": "2025-03-24T00:00:00",
+        "EndDateTime": "2025-03-30T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3024",
+        "EventName": "WTT Feeder Otocec 2025 Presented by I Feel Slovenia ",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2025-03-25T00:00:00",
+        "EndDateTime": "2025-03-29T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3133",
+        "EventName": "WTT Star Contender Chennai 2025 Presented by IndianOil",
+        "City": "Chennai",
+        "Country": "India",
+        "StartDateTime": "2025-03-25T00:00:00",
+        "EndDateTime": "2025-03-30T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3074",
+        "EventName": "WTT Youth Contender Humacao 2025",
+        "City": "Humacao",
+        "Country": "Puerto Rico",
+        "StartDateTime": "2025-03-26T00:00:00",
+        "EndDateTime": "2025-03-29T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3025",
+        "EventName": "WTT Feeder Otocec II 2025 Presented by I Feel Slovenia ",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2025-03-30T00:00:00",
+        "EndDateTime": "2025-04-03T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3075",
+        "EventName": "WTT Youth Contender Cuenca 2025",
+        "City": "Cuenca",
+        "Country": "Ecuador",
+        "StartDateTime": "2025-04-01T00:00:00",
+        "EndDateTime": "2025-04-04T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3087",
+        "EventName": "WTT Champions Incheon 2025",
+        "City": "Incheon",
+        "Country": "Korea Republic",
+        "StartDateTime": "2025-04-01T00:00:00",
+        "EndDateTime": "2025-04-06T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3151",
+        "EventName": "Central American Championships 2025",
+        "City": "San Jose",
+        "Country": "Costa Rica",
+        "StartDateTime": "2025-04-01T00:00:00",
+        "EndDateTime": "2025-04-06T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3071",
+        "EventName": "WTT Youth Contender Zrenjanin 2025",
+        "City": "Zrenjanin",
+        "Country": "Serbia",
+        "StartDateTime": "2025-04-02T00:00:00",
+        "EndDateTime": "2025-04-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3063",
+        "EventName": "WTT Youth Contender San Francisco II 2025 Presented by MongoDB",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2025-04-05T00:00:00",
+        "EndDateTime": "2025-04-08T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3069",
+        "EventName": "WTT Feeder Havirov 2025",
+        "City": "Havirov",
+        "Country": "Czechia",
+        "StartDateTime": "2025-04-05T00:00:00",
+        "EndDateTime": "2025-04-09T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3038",
+        "EventName": "WTT Youth Contender Metz 2025",
+        "City": "Metz",
+        "Country": "France",
+        "StartDateTime": "2025-04-07T00:00:00",
+        "EndDateTime": "2025-04-10T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3088",
+        "EventName": "WTT Contender Taiyuan 2025",
+        "City": "Taiyuan",
+        "Country": "China",
+        "StartDateTime": "2025-04-08T00:00:00",
+        "EndDateTime": "2025-04-13T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3039",
+        "EventName": "WTT Youth Star Contender Metz 2025",
+        "City": "Metz",
+        "Country": "France",
+        "StartDateTime": "2025-04-11T00:00:00",
+        "EndDateTime": "2025-04-13T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3109",
+        "EventName": "ITTF MEN'S AND WOMEN'S WORLD CUP MACAO 2025 PRESENTED BY GALAXY ENTERTAINMENT GROUP",
+        "City": "",
+        "Country": "Macao, China",
+        "StartDateTime": "2025-04-14T00:00:00",
+        "EndDateTime": "2025-04-20T00:00:00",
+        "EventType": "Singles World Cup"
+    },
+    {
+        "EventId": "3161",
+        "EventName": "South American Master Championships 2025",
+        "City": "Rio de Janeiro",
+        "Country": "Brazil",
+        "StartDateTime": "2025-04-15T00:00:00",
+        "EndDateTime": "2025-04-20T00:00:00",
+        "EventType": "Veteran Championships"
+    },
+    {
+        "EventId": "3182",
+        "EventName": "Southeast Asian Regional Youth Championships 2025",
+        "City": "Jakarta",
+        "Country": "Indonesia",
+        "StartDateTime": "2025-04-17T00:00:00",
+        "EndDateTime": "2025-04-22T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3181",
+        "EventName": "Central Asian Regional Youth Championships 2025",
+        "City": "Almaty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2025-04-18T00:00:00",
+        "EndDateTime": "2025-04-20T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3180",
+        "EventName": "East Asian Regional Youth Championships 2025",
+        "City": "Pyongyang",
+        "Country": "Korea DPR",
+        "StartDateTime": "2025-04-19T00:00:00",
+        "EndDateTime": "2025-04-20T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3167",
+        "EventName": "Caribbean Youth Championships 2025",
+        "City": "Bridgetown",
+        "Country": "Barbados",
+        "StartDateTime": "2025-04-20T00:00:00",
+        "EndDateTime": "2025-04-26T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3070",
+        "EventName": "WTT Youth Contender Sarajevo 2025",
+        "City": "Sarajevo",
+        "Country": "Bosnia-Herzegovina",
+        "StartDateTime": "2025-04-22T00:00:00",
+        "EndDateTime": "2025-04-25T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3089",
+        "EventName": "WTT Contender Tunis 2025 Presented By Tunisie Telecom",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-04-22T00:00:00",
+        "EndDateTime": "2025-04-27T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3023",
+        "EventName": "WTT Feeder Manchester 2025",
+        "City": "Manchester",
+        "Country": "England",
+        "StartDateTime": "2025-04-24T00:00:00",
+        "EndDateTime": "2025-04-27T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3179",
+        "EventName": "West Asian Regional Youth Championships 2025",
+        "City": "Dammam",
+        "Country": "Saudi Arabia",
+        "StartDateTime": "2025-04-24T00:00:00",
+        "EndDateTime": "2025-04-25T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3183",
+        "EventName": "South Asian Regional Youth Championships 2025",
+        "City": "Kathmandu",
+        "Country": "Nepal",
+        "StartDateTime": "2025-04-24T00:00:00",
+        "EndDateTime": "2025-04-27T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3187",
+        "EventName": "West Asian Regional Championships 2025",
+        "City": "Dammam",
+        "Country": "Saudi Arabia",
+        "StartDateTime": "2025-04-27T00:00:00",
+        "EndDateTime": "2025-04-28T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3040",
+        "EventName": "WTT Youth Contender Bangkok 2025 Presented by Thaioil",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2025-04-28T00:00:00",
+        "EndDateTime": "2025-05-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3135",
+        "EventName": "North Africa Regional Championships 2025",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-04-28T00:00:00",
+        "EndDateTime": "2025-04-30T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3153",
+        "EventName": "Central American Youth Championships 2025",
+        "City": "Guatemala City",
+        "Country": "Guatemala",
+        "StartDateTime": "2025-05-01T00:00:00",
+        "EndDateTime": "2025-05-06T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3041",
+        "EventName": "WTT Youth Star Contender Bangkok 2025 Presented by Thaioil",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2025-05-02T00:00:00",
+        "EndDateTime": "2025-05-04T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3080",
+        "EventName": "WTT Youth Contender Monteria 2025",
+        "City": "Monteria",
+        "Country": "Colombia",
+        "StartDateTime": "2025-05-13T00:00:00",
+        "EndDateTime": "2025-05-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3012",
+        "EventName": "WTT Youth Contender Panagyurishte 2025",
+        "City": "Panagyurishte",
+        "Country": "Bulgaria",
+        "StartDateTime": "2025-05-15T00:00:00",
+        "EndDateTime": "2025-05-18T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3108",
+        "EventName": "ITTF World Table Tennis Championships Finals Doha 2025",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2025-05-17T00:00:00",
+        "EndDateTime": "2025-05-25T00:00:00",
+        "EventType": "WTTC"
+    },
+    {
+        "EventId": "3154",
+        "EventName": "South American Youth Championships (U15 & U19) 2025",
+        "City": "Monteria",
+        "Country": "Colombia",
+        "StartDateTime": "2025-05-18T00:00:00",
+        "EndDateTime": "2025-05-24T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3013",
+        "EventName": "WTT Youth Contender Platja D'Aro 2025",
+        "City": "Platja d'Aro, Girona",
+        "Country": "Spain",
+        "StartDateTime": "2025-05-20T00:00:00",
+        "EndDateTime": "2025-05-23T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3042",
+        "EventName": "WTT Youth Contender Tashkent 2025",
+        "City": "Tashkent",
+        "Country": "Uzbekistan",
+        "StartDateTime": "2025-05-28T00:00:00",
+        "EndDateTime": "2025-05-31T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3139",
+        "EventName": "East Africa Regional Championships 2025",
+        "City": "Antananarivo",
+        "Country": "Madagascar",
+        "StartDateTime": "2025-05-28T00:00:00",
+        "EndDateTime": "2025-05-31T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3060",
+        "EventName": "WTT Youth Contender Prishtina 2025",
+        "City": "Pristina",
+        "Country": "Kosovo",
+        "StartDateTime": "2025-05-29T00:00:00",
+        "EndDateTime": "2025-06-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3058",
+        "EventName": "WTT Feeder Prishtina 2025",
+        "City": "Prishtina",
+        "Country": "Kosovo",
+        "StartDateTime": "2025-06-03T00:00:00",
+        "EndDateTime": "2025-06-07T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3014",
+        "EventName": "WTT Youth Contender Helsingborg 2025",
+        "City": "Helsingborg",
+        "Country": "Sweden",
+        "StartDateTime": "2025-06-06T00:00:00",
+        "EndDateTime": "2025-06-09T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3147",
+        "EventName": "ITTF Oceania Championships 2025",
+        "City": "Christchurch",
+        "Country": "New Zealand",
+        "StartDateTime": "2025-06-07T00:00:00",
+        "EndDateTime": "2025-06-11T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3090",
+        "EventName": "WTT Contender Skopje 2025",
+        "City": "Skopje",
+        "Country": "North Macedonia",
+        "StartDateTime": "2025-06-09T00:00:00",
+        "EndDateTime": "2025-06-15T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3203",
+        "EventName": "ITTF Oceania Regional Championships 2025",
+        "City": "Christchurch",
+        "Country": "New Zealand",
+        "StartDateTime": "2025-06-09T00:00:00",
+        "EndDateTime": "2025-06-10T00:00:00",
+        "EventType": "WTTC Finals Continental Qualifications"
+    },
+    {
+        "EventId": "3015",
+        "EventName": "WTT Youth Contender Sandefjord 2025",
+        "City": "Sandefjord",
+        "Country": "Norway",
+        "StartDateTime": "2025-06-11T00:00:00",
+        "EndDateTime": "2025-06-14T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3148",
+        "EventName": "ITTF Oceania Youth Championships 2025",
+        "City": "Christchurch",
+        "Country": "New Zealand",
+        "StartDateTime": "2025-06-12T00:00:00",
+        "EndDateTime": "2025-06-16T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3204",
+        "EventName": "ITTF Oceania Regional Youth Championships 2025",
+        "City": "Christchurch",
+        "Country": "New Zealand",
+        "StartDateTime": "2025-06-15T00:00:00",
+        "EndDateTime": "2025-06-15T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3168",
+        "EventName": "Caribbean Regional Championships 2025",
+        "City": "Bridgetown",
+        "Country": "Barbados",
+        "StartDateTime": "2025-06-16T00:00:00",
+        "EndDateTime": "2025-06-22T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3091",
+        "EventName": "WTT Star Contender Ljubljana 2025 Presented by I Feel Slovenia",
+        "City": "Ljubljana",
+        "Country": "Slovenia",
+        "StartDateTime": "2025-06-17T00:00:00",
+        "EndDateTime": "2025-06-22T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3155",
+        "EventName": "South American Championships 2025",
+        "City": "Lima",
+        "Country": "Peru",
+        "StartDateTime": "2025-06-23T00:00:00",
+        "EndDateTime": "2025-06-29T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3067",
+        "EventName": "WTT Youth Contender New York 2025",
+        "City": "Westchester",
+        "Country": "USA",
+        "StartDateTime": "2025-06-24T00:00:00",
+        "EndDateTime": "2025-06-27T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3092",
+        "EventName": "WTT Contender Zagreb 2025",
+        "City": "Zagreb",
+        "Country": "Croatia",
+        "StartDateTime": "2025-06-24T00:00:00",
+        "EndDateTime": "2025-06-29T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3165",
+        "EventName": "29th Asian Youth Championships 2025",
+        "City": "Tashkent",
+        "Country": "Uzbekistan",
+        "StartDateTime": "2025-06-26T00:00:00",
+        "EndDateTime": "2025-07-02T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3140",
+        "EventName": "Central Africa Regional Championships 2025",
+        "City": "Brazzaville",
+        "Country": "Congo Brazzaville",
+        "StartDateTime": "2025-06-27T00:00:00",
+        "EndDateTime": "2025-06-29T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3149",
+        "EventName": "Pacific Mini Games 2025",
+        "City": "Koror",
+        "Country": "Palau",
+        "StartDateTime": "2025-06-29T00:00:00",
+        "EndDateTime": "2025-07-09T00:00:00",
+        "EventType": "Multi-Sport Games"
+    },
+    {
+        "EventId": "3119",
+        "EventName": "WTT Youth Contender Caracas 2025",
+        "City": "Caracas",
+        "Country": "Venezuela",
+        "StartDateTime": "2025-07-01T00:00:00",
+        "EndDateTime": "2025-07-04T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3082",
+        "EventName": "United States Smash 2025",
+        "City": "Las Vegas",
+        "Country": "USA",
+        "StartDateTime": "2025-07-03T00:00:00",
+        "EndDateTime": "2025-07-13T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3141",
+        "EventName": "South Africa Regional Championships 2025",
+        "City": null,
+        "Country": "Namibia",
+        "StartDateTime": "2025-07-14T00:00:00",
+        "EndDateTime": "2025-07-17T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3208",
+        "EventName": "Central Asia Regional Team Championships 2025",
+        "City": "Amalty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2025-07-14T00:00:00",
+        "EndDateTime": "2025-07-16T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3142",
+        "EventName": "West Africa Regional Championships 2025",
+        "City": "Lagos",
+        "Country": "Nigeria",
+        "StartDateTime": "2025-07-16T00:00:00",
+        "EndDateTime": "2025-07-19T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3121",
+        "EventName": "WTT Contender Lagos 2025",
+        "City": "Lagos",
+        "Country": "Nigeria",
+        "StartDateTime": "2025-07-22T00:00:00",
+        "EndDateTime": "2025-07-26T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3175",
+        "EventName": "WTT Contender Buenos Aires 2025",
+        "City": "Buenos Aires",
+        "Country": "Argentina",
+        "StartDateTime": "2025-07-22T00:00:00",
+        "EndDateTime": "2025-07-27T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3045",
+        "EventName": "WTT Youth Contender Almaty 2025",
+        "City": "Almaty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2025-07-23T00:00:00",
+        "EndDateTime": "2025-07-26T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3143",
+        "EventName": "ITTF African Youth Championships 2025",
+        "City": "Lagos",
+        "Country": "Nigeria",
+        "StartDateTime": "2025-07-27T00:00:00",
+        "EndDateTime": "2025-08-03T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3017",
+        "EventName": "WTT Youth Contender Hong Kong 2025",
+        "City": null,
+        "Country": "Hong Kong, China",
+        "StartDateTime": "2025-07-28T00:00:00",
+        "EndDateTime": "2025-08-03T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3093",
+        "EventName": "WTT Star Contender Foz do Igua\u00e7u 2025",
+        "City": "Foz do Igua\u00e7u",
+        "Country": "Brazil",
+        "StartDateTime": "2025-07-30T00:00:00",
+        "EndDateTime": "2025-08-03T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3210",
+        "EventName": "South Asian Regional Championships 2025",
+        "City": "Amalty",
+        "Country": "Nepal",
+        "StartDateTime": "2025-07-30T00:00:00",
+        "EndDateTime": "2025-07-31T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3156",
+        "EventName": "Central American U11 & U13 Championships 2025",
+        "City": "Belmopan",
+        "Country": "Belize",
+        "StartDateTime": "2025-08-01T00:00:00",
+        "EndDateTime": "2025-08-06T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3144",
+        "EventName": "ITTF African Youth Cup 2025",
+        "City": "Lagos",
+        "Country": "Nigeria",
+        "StartDateTime": "2025-08-04T00:00:00",
+        "EndDateTime": "2025-08-05T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3177",
+        "EventName": "WTT Feeder Spokane 2025",
+        "City": "Spokane ",
+        "Country": "USA",
+        "StartDateTime": "2025-08-05T00:00:00",
+        "EndDateTime": "2025-08-08T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3072",
+        "EventName": "WTT Youth Contender Vientiane 2025 Presented by ICBC Bank",
+        "City": "Vientiane",
+        "Country": "Laos",
+        "StartDateTime": "2025-08-06T00:00:00",
+        "EndDateTime": "2025-08-09T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3094",
+        "EventName": "WTT Champions Yokohama 2025",
+        "City": null,
+        "Country": "Japan",
+        "StartDateTime": "2025-08-07T00:00:00",
+        "EndDateTime": "2025-08-11T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3178",
+        "EventName": "WTT Feeder Spokane II 2025",
+        "City": "Spokane ",
+        "Country": "USA",
+        "StartDateTime": "2025-08-09T00:00:00",
+        "EndDateTime": "2025-08-12T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3131",
+        "EventName": "WTT Feeder Vientiane 2025 Presented by ICBC Bank",
+        "City": null,
+        "Country": "Laos",
+        "StartDateTime": "2025-08-11T00:00:00",
+        "EndDateTime": "2025-08-15T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3044",
+        "EventName": "WTT Youth Contender Amman 2025",
+        "City": "Amman",
+        "Country": "Jordan",
+        "StartDateTime": "2025-08-14T00:00:00",
+        "EndDateTime": "2025-08-17T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3127",
+        "EventName": "WTT Youth Contender Mississauga 2025",
+        "City": "Mississauga",
+        "Country": "Canada",
+        "StartDateTime": "2025-08-14T00:00:00",
+        "EndDateTime": "2025-08-17T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3128",
+        "EventName": "Europe Smash - Sweden 2025",
+        "City": "Malm\u00f6",
+        "Country": "Sweden",
+        "StartDateTime": "2025-08-14T00:00:00",
+        "EndDateTime": "2025-08-24T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3157",
+        "EventName": "Asuncion 2025 Junior Pan American Games",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2025-08-16T00:00:00",
+        "EndDateTime": "2025-08-21T00:00:00",
+        "EventType": "Pan American Junior Games"
+    },
+    {
+        "EventId": "3027",
+        "EventName": "WTT Feeder Panagyurishte 2025 Presented by Asarel",
+        "City": "Panagyurishte",
+        "Country": "Bulgaria",
+        "StartDateTime": "2025-08-21T00:00:00",
+        "EndDateTime": "2025-08-24T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3195",
+        "EventName": "Europe Youth Smash - Sweden 2025",
+        "City": "Malm\u00f6",
+        "Country": "Sweden",
+        "StartDateTime": "2025-08-21T00:00:00",
+        "EndDateTime": "2025-08-24T00:00:00",
+        "EventType": "WTT Youth Smash"
+    },
+    {
+        "EventId": "3158",
+        "EventName": "ITTF Pan American Youth Championships 2025",
+        "City": "Rosario",
+        "Country": "Argentina",
+        "StartDateTime": "2025-08-24T00:00:00",
+        "EndDateTime": "2025-08-31T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3028",
+        "EventName": "WTT Feeder Olomouc 2025",
+        "City": "Olomouc",
+        "Country": "Czechia",
+        "StartDateTime": "2025-08-28T00:00:00",
+        "EndDateTime": "2025-08-31T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3046",
+        "EventName": "WTT Youth Contender Otocec 2025 Presented by I Feel Slovenia",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2025-08-28T00:00:00",
+        "EndDateTime": "2025-09-03T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3047",
+        "EventName": "WTT Youth Contender Varazdin 2025",
+        "City": "Vara\u017edin",
+        "Country": "Croatia",
+        "StartDateTime": "2025-08-28T00:00:00",
+        "EndDateTime": "2025-09-03T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3096",
+        "EventName": "WTT Contender Almaty 2025",
+        "City": "Almaty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2025-09-02T00:00:00",
+        "EndDateTime": "2025-09-07T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3160",
+        "EventName": "Pan American U11 & U13 Championships 2025",
+        "City": "Antigua",
+        "Country": "Guatemala",
+        "StartDateTime": "2025-09-03T00:00:00",
+        "EndDateTime": "2025-09-10T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3061",
+        "EventName": "WTT Youth Star Contender Skopje 2025",
+        "City": "Skopje",
+        "Country": "North Macedonia",
+        "StartDateTime": "2025-09-05T00:00:00",
+        "EndDateTime": "2025-09-07T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3097",
+        "EventName": "WTT Champions Macao 2025 Presented by Galaxy Entertainment Group",
+        "City": "Macao",
+        "Country": "Macao, China",
+        "StartDateTime": "2025-09-09T00:00:00",
+        "EndDateTime": "2025-09-14T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3048",
+        "EventName": "WTT Youth Contender Bangkok II 2025",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2025-09-10T00:00:00",
+        "EndDateTime": "2025-09-13T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3049",
+        "EventName": "WTT Youth Contender Luxembourg 2025 Presented by LuXembourg - Let\u2019s Make It Happen",
+        "City": "Luxembourg",
+        "Country": "Luxembourg",
+        "StartDateTime": "2025-09-10T00:00:00",
+        "EndDateTime": "2025-09-13T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3199",
+        "EventName": "WTT Feeder Istanbul 2025",
+        "City": "Istanbul",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2025-09-11T00:00:00",
+        "EndDateTime": "2025-09-15T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3159",
+        "EventName": "Central American Master Championships 2025",
+        "City": "Guatemala City",
+        "Country": "Guatemala",
+        "StartDateTime": "2025-09-12T00:00:00",
+        "EndDateTime": "2025-09-15T00:00:00",
+        "EventType": "Veteran Championships"
+    },
+    {
+        "EventId": "3031",
+        "EventName": "WTT Feeder Cappadocia II 2025",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2025-09-16T00:00:00",
+        "EndDateTime": "2025-09-20T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3043",
+        "EventName": "WTT Youth Contender San Francisco III 2025 Presented by DoorDash",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2025-09-17T00:00:00",
+        "EndDateTime": "2025-09-20T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3062",
+        "EventName": "WTT Youth Contender Batumi 2025",
+        "City": "Batumi",
+        "Country": "Georgia",
+        "StartDateTime": "2025-09-18T00:00:00",
+        "EndDateTime": "2025-09-21T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3068",
+        "EventName": "WTT Youth Contender Fremont 2025 Presented By Databricks",
+        "City": "Fremont",
+        "Country": "USA",
+        "StartDateTime": "2025-09-22T00:00:00",
+        "EndDateTime": "2025-09-25T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3098",
+        "EventName": "China Smash 2025 Presented by Beijing Shijingshan Culture & Tourism Group",
+        "City": "Beijing",
+        "Country": "China",
+        "StartDateTime": "2025-09-25T00:00:00",
+        "EndDateTime": "2025-10-05T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3150",
+        "EventName": "ITTF Oceania Para Championships 2025",
+        "City": "Auckland",
+        "Country": "New Zealand",
+        "StartDateTime": "2025-09-26T00:00:00",
+        "EndDateTime": "2025-09-28T00:00:00",
+        "EventType": "World Para Table Tennis Championships"
+    },
+    {
+        "EventId": "3227",
+        "EventName": "China Youth Smash 2025 Presented by Beijing Shijingshan Culture & Tourism Group",
+        "City": "Beijing",
+        "Country": "China",
+        "StartDateTime": "2025-10-03T00:00:00",
+        "EndDateTime": "2025-10-05T00:00:00",
+        "EventType": "WTT Youth Smash"
+    },
+    {
+        "EventId": "3050",
+        "EventName": "WTT Youth Contender Perth 2025",
+        "City": "Perth",
+        "Country": "Australia",
+        "StartDateTime": "2025-10-08T00:00:00",
+        "EndDateTime": "2025-10-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3107",
+        "EventName": "WTT Youth Contender Tunis II 2025",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2025-10-08T00:00:00",
+        "EndDateTime": "2025-10-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3166",
+        "EventName": "28th ITTF- ATTU Asian Table Tennis Team Championships 2025",
+        "City": "Bhubaneswar",
+        "Country": "India",
+        "StartDateTime": "2025-10-11T00:00:00",
+        "EndDateTime": "2025-10-15T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3162",
+        "EventName": "ITTF Pan American Championships 2025",
+        "City": "Rock Hill",
+        "Country": "USA",
+        "StartDateTime": "2025-10-12T00:00:00",
+        "EndDateTime": "2025-10-19T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3078",
+        "EventName": "WTT Youth Contender Podgorica 2025",
+        "City": "Podgorica",
+        "Country": "Montenegro",
+        "StartDateTime": "2025-10-13T00:00:00",
+        "EndDateTime": "2025-10-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3079",
+        "EventName": "WTT Youth Star Contender Podgorica 2025",
+        "City": "Podgorica",
+        "Country": "Montenegro",
+        "StartDateTime": "2025-10-17T00:00:00",
+        "EndDateTime": "2025-10-19T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3077",
+        "EventName": "WTT Youth Contender Dubai 2025",
+        "City": "Dubai",
+        "Country": "United Arab Emirates",
+        "StartDateTime": "2025-10-21T00:00:00",
+        "EndDateTime": "2025-10-24T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3110",
+        "EventName": "WTT Star Contender London 2025",
+        "City": "London",
+        "Country": "England",
+        "StartDateTime": "2025-10-21T00:00:00",
+        "EndDateTime": "2025-10-26T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3123",
+        "EventName": "WTT Youth Contender Caracas II 2025",
+        "City": "Caracas",
+        "Country": "Venezuela",
+        "StartDateTime": "2025-10-23T00:00:00",
+        "EndDateTime": "2025-10-26T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3099",
+        "EventName": "WTT Champions Montpellier 2025",
+        "City": "Montpellier",
+        "Country": "France",
+        "StartDateTime": "2025-10-28T00:00:00",
+        "EndDateTime": "2025-11-02T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3051",
+        "EventName": "WTT Youth Contender Cairo 2025",
+        "City": "Cairo",
+        "Country": "Egypt",
+        "StartDateTime": "2025-10-29T00:00:00",
+        "EndDateTime": "2025-11-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3055",
+        "EventName": "WTT Youth Contender San Francisco IV 2025 Presented by MongoDB",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2025-10-29T00:00:00",
+        "EndDateTime": "2025-11-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3053",
+        "EventName": "WTT Youth Contender Lignano 2025",
+        "City": "Lignano Sabbiadoro",
+        "Country": "Italy",
+        "StartDateTime": "2025-11-03T00:00:00",
+        "EndDateTime": "2025-11-09T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3056",
+        "EventName": "WTT Youth Contender Senec 2025",
+        "City": "Senec",
+        "Country": "Slovak Republic",
+        "StartDateTime": "2025-11-03T00:00:00",
+        "EndDateTime": "2025-11-09T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3100",
+        "EventName": "WTT Champions Frankfurt 2025",
+        "City": "Frankfurt",
+        "Country": "Germany",
+        "StartDateTime": "2025-11-04T00:00:00",
+        "EndDateTime": "2025-11-09T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3052",
+        "EventName": "WTT Youth Contender Sulaymaniyah 2025",
+        "City": "Sulaymaniyah",
+        "Country": "Iraq",
+        "StartDateTime": "2025-11-05T00:00:00",
+        "EndDateTime": "2025-11-08T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3066",
+        "EventName": "WTT Feeder Vila Nova de Gaia 2025",
+        "City": "Vila Nova de Gaia",
+        "Country": "Portugal",
+        "StartDateTime": "2025-11-05T00:00:00",
+        "EndDateTime": "2025-11-09T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3191",
+        "EventName": "WTT Feeder Gdansk 2025",
+        "City": "Gdansk",
+        "Country": "Poland",
+        "StartDateTime": "2025-11-10T00:00:00",
+        "EndDateTime": "2025-11-14T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3054",
+        "EventName": "WTT Youth Contender Szombathely 2025",
+        "City": "Szombathely",
+        "Country": "Hungary",
+        "StartDateTime": "2025-11-11T00:00:00",
+        "EndDateTime": "2025-11-14T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3176",
+        "EventName": "WTT Star Contender Muscat 2025",
+        "City": "Muscat",
+        "Country": "Oman",
+        "StartDateTime": "2025-11-17T00:00:00",
+        "EndDateTime": "2025-11-22T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3145",
+        "EventName": "ITTF African Para Championships 2025",
+        "City": "Cairo",
+        "Country": "Egypt",
+        "StartDateTime": "2025-11-20T00:00:00",
+        "EndDateTime": "2025-11-24T00:00:00",
+        "EventType": "World Para Table Tennis Championships"
+    },
+    {
+        "EventId": "3164",
+        "EventName": "XX Bolivarian Games 2025",
+        "City": "Lima",
+        "Country": "Peru",
+        "StartDateTime": "2025-11-22T00:00:00",
+        "EndDateTime": "2025-12-07T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3118",
+        "EventName": "ITTF World Youth Championships 2025",
+        "City": "Cluj Napoca",
+        "Country": "Romania",
+        "StartDateTime": "2025-11-23T00:00:00",
+        "EndDateTime": "2025-11-30T00:00:00",
+        "EventType": "World Youth Championships"
+    },
+    {
+        "EventId": "3065",
+        "EventName": "WTT Feeder D\u00fcsseldorf II 2025",
+        "City": "D\u00fcsseldorf",
+        "Country": "Germany",
+        "StartDateTime": "2025-11-24T00:00:00",
+        "EndDateTime": "2025-11-27T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3059",
+        "EventName": "WTT Feeder Parma 2025",
+        "City": "Parma",
+        "Country": "Italy",
+        "StartDateTime": "2025-11-29T00:00:00",
+        "EndDateTime": "2025-12-03T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3263",
+        "EventName": "ITTF MIXED TEAM WORLD CUP CHENGDU 2025 PRESENTED BY CHINA TELECOM",
+        "City": "Chengdu",
+        "Country": "China",
+        "StartDateTime": "2025-11-30T00:00:00",
+        "EndDateTime": "2025-12-07T00:00:00",
+        "EventType": "World Mixed Team Championships"
+    },
+    {
+        "EventId": "3076",
+        "EventName": "WTT Youth Contender Dammam 2025",
+        "City": "Dammam",
+        "Country": "Saudi Arabia",
+        "StartDateTime": "2025-12-07T00:00:00",
+        "EndDateTime": "2025-12-10T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3112",
+        "EventName": "WTT Finals Hong Kong 2025",
+        "City": null,
+        "Country": "Hong Kong, China",
+        "StartDateTime": "2025-12-10T00:00:00",
+        "EndDateTime": "2025-12-14T00:00:00",
+        "EventType": "WTT Finals"
+    },
+    {
+        "EventId": "3273",
+        "EventName": "WTT Youth Contender Vadodara 2026",
+        "City": "Vadodara",
+        "Country": "India",
+        "StartDateTime": "2026-01-02T00:00:00",
+        "EndDateTime": "2026-01-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3274",
+        "EventName": "WTT Youth Contender San Francisco 2026",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2026-01-02T00:00:00",
+        "EndDateTime": "2026-01-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3231",
+        "EventName": "WTT Champions Doha 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-01-07T00:00:00",
+        "EndDateTime": "2026-01-11T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3353",
+        "EventName": "WTT Feeder Vadodara 2026",
+        "City": "Vadodara",
+        "Country": "India",
+        "StartDateTime": "2026-01-07T00:00:00",
+        "EndDateTime": "2026-01-11T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3275",
+        "EventName": "WTT Youth Contender Linz 2026",
+        "City": "Linz",
+        "Country": "Austria",
+        "StartDateTime": "2026-01-08T00:00:00",
+        "EndDateTime": "2026-01-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3232",
+        "EventName": "WTT Star Contender Doha 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-01-13T00:00:00",
+        "EndDateTime": "2026-01-18T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3276",
+        "EventName": "WTT Youth Contender Manama 2026",
+        "City": "Manama",
+        "Country": "Bahrain",
+        "StartDateTime": "2026-01-14T00:00:00",
+        "EndDateTime": "2026-01-17T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3251",
+        "EventName": "WTT Contender Muscat 2026",
+        "City": "Muscat",
+        "Country": "Oman",
+        "StartDateTime": "2026-01-19T00:00:00",
+        "EndDateTime": "2026-01-24T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3278",
+        "EventName": "WTT Youth Contender Doha 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-01-19T00:00:00",
+        "EndDateTime": "2026-01-22T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3277",
+        "EventName": "WTT Youth Star Contender Doha 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-01-23T00:00:00",
+        "EndDateTime": "2026-01-25T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3354",
+        "EventName": "WTT Feeder Doha 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-01-27T00:00:00",
+        "EndDateTime": "2026-01-31T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3355",
+        "EventName": "WTT Feeder Lille 2026",
+        "City": "Lille",
+        "Country": "France",
+        "StartDateTime": "2026-01-27T00:00:00",
+        "EndDateTime": "2026-01-31T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3279",
+        "EventName": "WTT Youth Contender Cappadocia 2026",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-01-28T00:00:00",
+        "EndDateTime": "2026-01-31T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3398",
+        "EventName": "ITTF-Americas Cup San Francisco 2026",
+        "City": "San Francisco",
+        "Country": "USA",
+        "StartDateTime": "2026-01-28T00:00:00",
+        "EndDateTime": "2026-02-01T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3300",
+        "EventName": "ITTF-Oceania Cup Christchurch 2026",
+        "City": "Christchurch",
+        "Country": "New Zealand",
+        "StartDateTime": "2026-01-31T00:00:00",
+        "EndDateTime": "2026-02-01T00:00:00",
+        "EventType": "Continental Cups"
+    },
+    {
+        "EventId": "3163",
+        "EventName": "ITTF-Americas Masters Championships Asuncion 2026 ",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2026-02-02T00:00:00",
+        "EndDateTime": "2026-02-07T00:00:00",
+        "EventType": "Veteran Championships"
+    },
+    {
+        "EventId": "3266",
+        "EventName": "WTT Feeder Cappadocia 2026",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-02-02T00:00:00",
+        "EndDateTime": "2026-02-06T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3280",
+        "EventName": "WTT Youth Contender Tunis 2026",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2026-02-02T00:00:00",
+        "EndDateTime": "2026-02-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3281",
+        "EventName": "WTT Youth Star Contender Tunis 2026",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2026-02-06T00:00:00",
+        "EndDateTime": "2026-02-08T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3233",
+        "EventName": "WTT Star Contender Chennai 2026",
+        "City": "Chennai",
+        "Country": "India",
+        "StartDateTime": "2026-02-10T00:00:00",
+        "EndDateTime": "2026-02-15T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3284",
+        "EventName": "WTT Youth Contender Vila Real 2026",
+        "City": "Vila Real",
+        "Country": "Portugal",
+        "StartDateTime": "2026-02-10T00:00:00",
+        "EndDateTime": "2026-02-13T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3234",
+        "EventName": "Singapore Smash 2026 Presented by Resorts World Sentosa ",
+        "City": "Singapore",
+        "Country": "Singapore",
+        "StartDateTime": "2026-02-19T00:00:00",
+        "EndDateTime": "2026-03-01T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3285",
+        "EventName": "Singapore Youth Smash 2026",
+        "City": "Singapore",
+        "Country": "Singapore",
+        "StartDateTime": "2026-02-26T00:00:00",
+        "EndDateTime": "2026-03-01T00:00:00",
+        "EventType": "WTT Youth Smash"
+    },
+    {
+        "EventId": "3267",
+        "EventName": "WTT Feeder D\u00fcsseldorf 2026",
+        "City": "D\u00fcsseldorf",
+        "Country": "Germany",
+        "StartDateTime": "2026-03-02T00:00:00",
+        "EndDateTime": "2026-03-06T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3286",
+        "EventName": "WTT Youth Contender Buenos Aires 2026",
+        "City": "Buenos Aires",
+        "Country": "Argentina",
+        "StartDateTime": "2026-03-04T00:00:00",
+        "EndDateTime": "2026-03-07T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3291",
+        "EventName": "WTT Youth Contender Wladyslawowo 2026",
+        "City": "Wladyslawowo",
+        "Country": "Poland",
+        "StartDateTime": "2026-03-04T00:00:00",
+        "EndDateTime": "2026-03-07T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3268",
+        "EventName": "WTT Feeder Otocec 2026",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2026-03-07T00:00:00",
+        "EndDateTime": "2026-03-11T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3292",
+        "EventName": "WTT Youth Contender Asunci\u00f3n 2026",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2026-03-09T00:00:00",
+        "EndDateTime": "2026-03-12T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3293",
+        "EventName": "WTT Youth Contender Berlin 2026",
+        "City": "Berlin",
+        "Country": "Germany",
+        "StartDateTime": "2026-03-09T00:00:00",
+        "EndDateTime": "2026-03-15T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3294",
+        "EventName": "WTT Youth Contender Havirov 2026",
+        "City": "Havirov",
+        "Country": "Czechia",
+        "StartDateTime": "2026-03-09T00:00:00",
+        "EndDateTime": "2026-03-15T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3235",
+        "EventName": "WTT Champions Chongqing 2026",
+        "City": "Chongqing",
+        "Country": "China",
+        "StartDateTime": "2026-03-10T00:00:00",
+        "EndDateTime": "2026-03-15T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3356",
+        "EventName": "WTT Feeder Varazdin 2026",
+        "City": "Vara\u017edin",
+        "Country": "Croatia",
+        "StartDateTime": "2026-03-12T00:00:00",
+        "EndDateTime": "2026-03-16T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3399",
+        "EventName": "South America U11&U13 Championships Asuncion 2026",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2026-03-14T00:00:00",
+        "EndDateTime": "2026-03-20T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3236",
+        "EventName": "WTT Contender Tunisia 2026",
+        "City": "",
+        "Country": "Tunisia",
+        "StartDateTime": "2026-03-23T00:00:00",
+        "EndDateTime": "2026-03-28T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3296",
+        "EventName": "WTT Youth Contender Panagyurishte 2026",
+        "City": "Panagyurishte",
+        "Country": "Bulgaria",
+        "StartDateTime": "2026-03-26T00:00:00",
+        "EndDateTime": "2026-03-29T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3299",
+        "EventName": "WTT Youth Contender Humacao 2026",
+        "City": "Humacao",
+        "Country": "Puerto Rico",
+        "StartDateTime": "2026-03-26T00:00:00",
+        "EndDateTime": "2026-03-29T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3400",
+        "EventName": "South America Masters Championships Lima 2026",
+        "City": "Lima",
+        "Country": "Peru",
+        "StartDateTime": "2026-03-28T00:00:00",
+        "EndDateTime": "2026-04-04T00:00:00",
+        "EventType": "Veteran Championships"
+    },
+    {
+        "EventId": "3379",
+        "EventName": "ITTF Men\u2019s & Women\u2019s World Cups Macao 2026",
+        "City": null,
+        "Country": "Macao, China",
+        "StartDateTime": "2026-03-30T00:00:00",
+        "EndDateTime": "2026-04-05T00:00:00",
+        "EventType": "Singles World Cup"
+    },
+    {
+        "EventId": "3295",
+        "EventName": "WTT Youth Contender Riyadh 2026",
+        "City": "Riyhad",
+        "Country": "Saudi Arabia",
+        "StartDateTime": "2026-03-31T00:00:00",
+        "EndDateTime": "2026-04-03T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3297",
+        "EventName": "WTT Youth Contender Novi Sad 2026",
+        "City": "Novi Sad",
+        "Country": "Serbia",
+        "StartDateTime": "2026-03-31T00:00:00",
+        "EndDateTime": "2026-04-03T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3402",
+        "EventName": "Caribbean Youth Championships Santo Domingo 2026",
+        "City": "Bridgetown",
+        "Country": "Dominican Republic",
+        "StartDateTime": "2026-04-06T00:00:00",
+        "EndDateTime": "2026-04-12T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3237",
+        "EventName": "WTT Contender Taiyuan 2026",
+        "City": "Taiyuan",
+        "Country": "China",
+        "StartDateTime": "2026-04-07T00:00:00",
+        "EndDateTime": "2026-04-12T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3373",
+        "EventName": "WTT Feeder Cappadocia II 2026",
+        "City": "Cappadocia - Nevsehir",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-04-07T00:00:00",
+        "EndDateTime": "2026-04-11T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3298",
+        "EventName": "WTT Youth Contender Luxembourg 2026",
+        "City": "Luxembourg",
+        "Country": "Luxembourg",
+        "StartDateTime": "2026-04-08T00:00:00",
+        "EndDateTime": "2026-04-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3270",
+        "EventName": "WTT Feeder Havirov 2026",
+        "City": "Havirov",
+        "Country": "Czechia",
+        "StartDateTime": "2026-04-13T00:00:00",
+        "EndDateTime": "2026-04-17T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3301",
+        "EventName": "WTT Youth Contender Metz 2026",
+        "City": "Metz",
+        "Country": "France",
+        "StartDateTime": "2026-04-13T00:00:00",
+        "EndDateTime": "2026-04-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3405",
+        "EventName": "IV South America Youth Games Panama 2026",
+        "City": "Monteria",
+        "Country": "Panama",
+        "StartDateTime": "2026-04-13T00:00:00",
+        "EndDateTime": "2026-04-18T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3403",
+        "EventName": "Central America & Caribbean Championships Santo Domingo 2026",
+        "City": "Kampala",
+        "Country": "Dominican Republic",
+        "StartDateTime": "2026-04-15T00:00:00",
+        "EndDateTime": "2026-04-21T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3404",
+        "EventName": "South America Youth Championships Rio de Janeiro 2026",
+        "City": "Monteria",
+        "Country": "Brazil",
+        "StartDateTime": "2026-04-15T00:00:00",
+        "EndDateTime": "2026-04-21T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3302",
+        "EventName": "WTT Youth Star Contender Metz 2026",
+        "City": "Metz",
+        "Country": "France",
+        "StartDateTime": "2026-04-17T00:00:00",
+        "EndDateTime": "2026-04-19T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3357",
+        "EventName": "WTT Feeder Senec 2026",
+        "City": "Senec",
+        "Country": "Slovak Republic",
+        "StartDateTime": "2026-04-18T00:00:00",
+        "EndDateTime": "2026-04-22T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3303",
+        "EventName": "WTT Youth Contender Sulaymaniyah 2026",
+        "City": "Sulaymaniyah",
+        "Country": "Iraq",
+        "StartDateTime": "2026-04-22T00:00:00",
+        "EndDateTime": "2026-04-25T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3304",
+        "EventName": "WTT Youth Contender Sarajevo 2026",
+        "City": "Sarajevo",
+        "Country": "Bosnia-Herzegovina",
+        "StartDateTime": "2026-04-27T00:00:00",
+        "EndDateTime": "2026-04-30T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3216",
+        "EventName": "ITTF World Team Table Tennis Championships Finals London 2026",
+        "City": "London",
+        "Country": "England",
+        "StartDateTime": "2026-04-28T00:00:00",
+        "EndDateTime": "2026-05-10T00:00:00",
+        "EventType": "WTTC"
+    },
+    {
+        "EventId": "3406",
+        "EventName": "Central America Youth Championships Panama 2026",
+        "City": "Guatemala City",
+        "Country": "Panama",
+        "StartDateTime": "2026-05-01T00:00:00",
+        "EndDateTime": "2026-05-01T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3305",
+        "EventName": "WTT Youth Contender Platja D'Aro 2026",
+        "City": "Platja d'Aro, Girona",
+        "Country": "Spain",
+        "StartDateTime": "2026-05-06T00:00:00",
+        "EndDateTime": "2026-05-09T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3358",
+        "EventName": "WTT Feeder Istanbul 2026",
+        "City": "Istanbul",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-05-10T00:00:00",
+        "EndDateTime": "2026-05-14T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3320",
+        "EventName": "WTT Youth Contender Tashkent 2026",
+        "City": "Tashkent",
+        "Country": "Uzbekistan",
+        "StartDateTime": "2026-05-13T00:00:00",
+        "EndDateTime": "2026-05-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3307",
+        "EventName": "WTT Youth Contender Mississauga 2026",
+        "City": "Mississauga",
+        "Country": "Canada",
+        "StartDateTime": "2026-05-15T00:00:00",
+        "EndDateTime": "2026-05-18T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3360",
+        "EventName": "WTT Feeder Albufeira 2026",
+        "City": "Albufeira",
+        "Country": "Portugal",
+        "StartDateTime": "2026-05-15T00:00:00",
+        "EndDateTime": "2026-05-19T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3308",
+        "EventName": "WTT Youth Contender Bangkok 2026",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2026-05-18T00:00:00",
+        "EndDateTime": "2026-05-21T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3238",
+        "EventName": "WTT Contender Lagos 2026",
+        "City": "Lagos",
+        "Country": "Nigeria",
+        "StartDateTime": "2026-05-19T00:00:00",
+        "EndDateTime": "2026-05-24T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3361",
+        "EventName": "WTT Feeder Hennebont 2026",
+        "City": "Hennebont",
+        "Country": "France",
+        "StartDateTime": "2026-05-20T00:00:00",
+        "EndDateTime": "2026-05-24T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3306",
+        "EventName": "WTT Youth Star Contender Bangkok 2026",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2026-05-22T00:00:00",
+        "EndDateTime": "2026-05-24T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3309",
+        "EventName": "WTT Youth Contender Prishtina 2026",
+        "City": "Pristina",
+        "Country": "Kosovo",
+        "StartDateTime": "2026-05-22T00:00:00",
+        "EndDateTime": "2026-05-25T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3271",
+        "EventName": "WTT Feeder Prishtina 2026",
+        "City": "Prishtina",
+        "Country": "Kosovo",
+        "StartDateTime": "2026-05-27T00:00:00",
+        "EndDateTime": "2026-05-31T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3310",
+        "EventName": "WTT Youth Contender Sandefjord 2026",
+        "City": "Sandefjord",
+        "Country": "Norway",
+        "StartDateTime": "2026-05-30T00:00:00",
+        "EndDateTime": "2026-06-02T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3239",
+        "EventName": "WTT Contender Skopje 2026",
+        "City": "Skopje",
+        "Country": "North Macedonia",
+        "StartDateTime": "2026-06-01T00:00:00",
+        "EndDateTime": "2026-06-07T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3311",
+        "EventName": "WTT Youth Contender Helsingborg 2026",
+        "City": "Helsingborg",
+        "Country": "Sweden",
+        "StartDateTime": "2026-06-04T00:00:00",
+        "EndDateTime": "2026-06-07T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3312",
+        "EventName": "WTT Youth Contender Rio de Janeiro 2026",
+        "City": "Rio de Janeiro",
+        "Country": "Brazil",
+        "StartDateTime": "2026-06-08T00:00:00",
+        "EndDateTime": "2026-06-11T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3240",
+        "EventName": "WTT Contender Zagreb 2026",
+        "City": "Zagreb",
+        "Country": "Croatia",
+        "StartDateTime": "2026-06-09T00:00:00",
+        "EndDateTime": "2026-06-14T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3313",
+        "EventName": "WTT Youth Star Contender Rio de Janeiro 2026",
+        "City": "Rio de Janeiro",
+        "Country": "Brazil",
+        "StartDateTime": "2026-06-12T00:00:00",
+        "EndDateTime": "2026-06-14T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3407",
+        "EventName": "South America Championships Santiago 2026",
+        "City": "Santiago",
+        "Country": "Chile",
+        "StartDateTime": "2026-06-15T00:00:00",
+        "EndDateTime": "2026-06-21T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3241",
+        "EventName": "WTT Star Contender Ljubljana 2026",
+        "City": "Ljubljana",
+        "Country": "Slovenia",
+        "StartDateTime": "2026-06-16T00:00:00",
+        "EndDateTime": "2026-06-21T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3315",
+        "EventName": "WTT Youth Contender Caracas 2026",
+        "City": "Caracas",
+        "Country": "Venezuela",
+        "StartDateTime": "2026-06-24T00:00:00",
+        "EndDateTime": "2026-06-27T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3242",
+        "EventName": "United States Smash 2026",
+        "City": "",
+        "Country": "USA",
+        "StartDateTime": "2026-06-25T00:00:00",
+        "EndDateTime": "2026-07-05T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3359",
+        "EventName": "WTT Feeder Istanbul II 2026",
+        "City": "Istanbul",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-07-01T00:00:00",
+        "EndDateTime": "2026-07-05T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3408",
+        "EventName": "Central America & Caribbean U11&U13 Championships 2026",
+        "City": null,
+        "Country": "Mexico",
+        "StartDateTime": "2026-07-01T00:00:00",
+        "EndDateTime": "2026-07-01T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3318",
+        "EventName": "WTT Youth Contender Hong Kong 2026",
+        "City": null,
+        "Country": "Hong Kong, China",
+        "StartDateTime": "2026-07-06T00:00:00",
+        "EndDateTime": "2026-07-12T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3363",
+        "EventName": "WTT Feeder Asunci\u00f3n 2026",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2026-07-08T00:00:00",
+        "EndDateTime": "2026-07-12T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3392",
+        "EventName": "European Youth Championships Gondomar 2026",
+        "City": "Ostrava",
+        "Country": "Portugal",
+        "StartDateTime": "2026-07-10T00:00:00",
+        "EndDateTime": "2026-07-17T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3449",
+        "EventName": "South Africa Championships Harare 2025",
+        "City": "Harare",
+        "Country": "Zimbabwe",
+        "StartDateTime": "2026-07-10T00:00:00",
+        "EndDateTime": "2026-07-12T00:00:00",
+        "EventType": "WTTC Finals Regional Qualifications"
+    },
+    {
+        "EventId": "3243",
+        "EventName": "WTT Contender Buenos Aires 2026",
+        "City": "Buenos Aires",
+        "Country": "Argentina",
+        "StartDateTime": "2026-07-14T00:00:00",
+        "EndDateTime": "2026-07-19T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3319",
+        "EventName": "WTT Youth Contender Ulaanbaatar 2026",
+        "City": "Ulaanbaatar",
+        "Country": "Mongolia",
+        "StartDateTime": "2026-07-14T00:00:00",
+        "EndDateTime": "2026-07-17T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3364",
+        "EventName": "WTT Feeder Ulaanbaatar 2026",
+        "City": "Ulaanbaatar",
+        "Country": "Mongolia",
+        "StartDateTime": "2026-07-19T00:00:00",
+        "EndDateTime": "2026-07-23T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3366",
+        "EventName": "WTT Youth Contender Tashkent II 2026",
+        "City": "Tashkent",
+        "Country": "Uzbekistan",
+        "StartDateTime": "2026-07-19T00:00:00",
+        "EndDateTime": "2026-07-22T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3244",
+        "EventName": "WTT Star Contender Brazil 2026",
+        "City": "TBC",
+        "Country": "Brazil",
+        "StartDateTime": "2026-07-21T00:00:00",
+        "EndDateTime": "2026-07-26T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3321",
+        "EventName": "WTT Youth Contender Almaty 2026",
+        "City": "Almaty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2026-07-24T00:00:00",
+        "EndDateTime": "2026-07-27T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3365",
+        "EventName": "WTT Feeder Tashkent 2026",
+        "City": "Tashkent",
+        "Country": "Uzbekistan",
+        "StartDateTime": "2026-07-24T00:00:00",
+        "EndDateTime": "2026-07-28T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3409",
+        "EventName": "XXV Central American and Caribbean Games Santo Domingo 2026",
+        "City": "Santiago",
+        "Country": "Dominican Republic",
+        "StartDateTime": "2026-07-24T00:00:00",
+        "EndDateTime": "2026-08-08T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3372",
+        "EventName": "WTT Feeder Tunis 2026",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2026-07-29T00:00:00",
+        "EndDateTime": "2026-08-02T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3322",
+        "EventName": "WTT Youth Contender Vientiane 2026",
+        "City": "Vientiane",
+        "Country": "Laos",
+        "StartDateTime": "2026-07-30T00:00:00",
+        "EndDateTime": "2026-08-02T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3272",
+        "EventName": "WTT Feeder Vientiane 2026",
+        "City": null,
+        "Country": "Laos",
+        "StartDateTime": "2026-08-04T00:00:00",
+        "EndDateTime": "2026-08-08T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3245",
+        "EventName": "WTT Champions Yokohama 2026",
+        "City": "Yokohama",
+        "Country": "Japan",
+        "StartDateTime": "2026-08-05T00:00:00",
+        "EndDateTime": "2026-08-09T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3323",
+        "EventName": "WTT Youth Contender Amman 2026",
+        "City": "Amman",
+        "Country": "Jordan",
+        "StartDateTime": "2026-08-05T00:00:00",
+        "EndDateTime": "2026-08-08T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3246",
+        "EventName": "Europe Smash - Sweden 2026",
+        "City": "Malm\u00f6",
+        "Country": "Sweden",
+        "StartDateTime": "2026-08-13T00:00:00",
+        "EndDateTime": "2026-08-23T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3374",
+        "EventName": "WTT Feeder Berlin 2026",
+        "City": "Berlin",
+        "Country": "Germany",
+        "StartDateTime": "2026-08-19T00:00:00",
+        "EndDateTime": "2026-08-23T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3410",
+        "EventName": "ITTF Americas Youth Championships Guatemala City 2026 ",
+        "City": "Rosario",
+        "Country": "Guatemala",
+        "StartDateTime": "2026-08-23T00:00:00",
+        "EndDateTime": "2026-08-30T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3282",
+        "EventName": "WTT Feeder Olomouc 2026",
+        "City": "Olomouc",
+        "Country": "Czechia",
+        "StartDateTime": "2026-08-24T00:00:00",
+        "EndDateTime": "2026-08-28T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3326",
+        "EventName": "WTT Youth Contender Varazdin 2026",
+        "City": "Vara\u017edin",
+        "Country": "Croatia",
+        "StartDateTime": "2026-08-25T00:00:00",
+        "EndDateTime": "2026-08-31T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3328",
+        "EventName": "WTT Youth Contender Otocec 2026",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2026-08-25T00:00:00",
+        "EndDateTime": "2026-08-31T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3454",
+        "EventName": "ITTF-Oceania Championships Ballarat 2026",
+        "City": "Ballarat",
+        "Country": "Australia",
+        "StartDateTime": "2026-08-26T00:00:00",
+        "EndDateTime": "2026-08-30T00:00:00",
+        "EventType": "WTTC Finals Continental Qualifications"
+    },
+    {
+        "EventId": "3247",
+        "EventName": "WTT Contender Almaty 2026",
+        "City": "Almaty",
+        "Country": "Kazakhstan",
+        "StartDateTime": "2026-09-01T00:00:00",
+        "EndDateTime": "2026-09-06T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3455",
+        "EventName": "ITTF-Oceania Youth Championships Ballarat 2026",
+        "City": "Ballarat",
+        "Country": "Australia",
+        "StartDateTime": "2026-09-01T00:00:00",
+        "EndDateTime": "2026-09-05T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3314",
+        "EventName": "WTT Youth Contender Tunis II 2026 ",
+        "City": "Tunis",
+        "Country": "Tunisia",
+        "StartDateTime": "2026-09-03T00:00:00",
+        "EndDateTime": "2026-09-06T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3332",
+        "EventName": "WTT Youth Contender Cuenca 2026",
+        "City": "Cuenca",
+        "Country": "Ecuador",
+        "StartDateTime": "2026-09-03T00:00:00",
+        "EndDateTime": "2026-09-06T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3350",
+        "EventName": "WTT Youth Contender Puerto Princesa 2026",
+        "City": "Puerto Princesa",
+        "Country": "Philippines",
+        "StartDateTime": "2026-09-03T00:00:00",
+        "EndDateTime": "2026-09-06T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3411",
+        "EventName": "ITTF Americas U11&U13 Championships 2026",
+        "City": "Antigua",
+        "Country": "USA",
+        "StartDateTime": "2026-09-07T00:00:00",
+        "EndDateTime": "2026-09-14T00:00:00",
+        "EventType": "ITTF International Youth Open"
+    },
+    {
+        "EventId": "3248",
+        "EventName": "WTT Champions Macao 2026",
+        "City": "Macao",
+        "Country": "Macao, China",
+        "StartDateTime": "2026-09-08T00:00:00",
+        "EndDateTime": "2026-09-13T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3253",
+        "EventName": "WTT Contender Panagyurishte 2026",
+        "City": "Panagyurishte",
+        "Country": "Bulgaria",
+        "StartDateTime": "2026-09-08T00:00:00",
+        "EndDateTime": "2026-09-13T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3415",
+        "EventName": "WTT Feeder Puerto Princesa 2026",
+        "City": "Puerto Princesa",
+        "Country": "Philippines",
+        "StartDateTime": "2026-09-08T00:00:00",
+        "EndDateTime": "2026-09-12T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3331",
+        "EventName": "WTT Youth Contender Bangkok II 2026",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2026-09-09T00:00:00",
+        "EndDateTime": "2026-09-12T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3337",
+        "EventName": "WTT Youth Contender Monteria 2026",
+        "City": "Monteria",
+        "Country": "Colombia",
+        "StartDateTime": "2026-09-09T00:00:00",
+        "EndDateTime": "2026-09-12T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3412",
+        "EventName": "XIII South American Games Santa Fe 2026",
+        "City": "Rosario",
+        "Country": "Argentina",
+        "StartDateTime": "2026-09-12T00:00:00",
+        "EndDateTime": "2026-09-26T00:00:00",
+        "EventType": "Multi-Sport Games"
+    },
+    {
+        "EventId": "3413",
+        "EventName": "Central America Masters Championships Tegucigalpa 2026",
+        "City": "Tegucigalpa",
+        "Country": "Honduras",
+        "StartDateTime": "2026-09-12T00:00:00",
+        "EndDateTime": "2026-09-15T00:00:00",
+        "EventType": "Veteran Championships"
+    },
+    {
+        "EventId": "3330",
+        "EventName": "WTT Youth Contender Gangneung 2026",
+        "City": "Gangneung",
+        "Country": "Korea Republic",
+        "StartDateTime": "2026-09-14T00:00:00",
+        "EndDateTime": "2026-09-17T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3371",
+        "EventName": "WTT Feeder Bangkok 2026",
+        "City": "Bangkok",
+        "Country": "Thailand",
+        "StartDateTime": "2026-09-14T00:00:00",
+        "EndDateTime": "2026-09-18T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3254",
+        "EventName": "WTT Star Contender London 2026",
+        "City": "London",
+        "Country": "England",
+        "StartDateTime": "2026-09-15T00:00:00",
+        "EndDateTime": "2026-09-20T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3329",
+        "EventName": "WTT Youth Star Contender Gangneung 2026",
+        "City": "Gangneung",
+        "Country": "Korea Republic",
+        "StartDateTime": "2026-09-18T00:00:00",
+        "EndDateTime": "2026-09-20T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3334",
+        "EventName": "WTT Youth Contender Pepinster 2026",
+        "City": null,
+        "Country": "Belgium",
+        "StartDateTime": "2026-09-21T00:00:00",
+        "EndDateTime": "2026-09-24T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3375",
+        "EventName": "WTT Feeder Linz 2026",
+        "City": "Linz",
+        "Country": "Austria",
+        "StartDateTime": "2026-09-23T00:00:00",
+        "EndDateTime": "2026-09-27T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3333",
+        "EventName": "WTT Youth Contender Batumi 2026",
+        "City": "Batumi",
+        "Country": "Georgia",
+        "StartDateTime": "2026-09-27T00:00:00",
+        "EndDateTime": "2026-09-30T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3367",
+        "EventName": "WTT Youth Contender Asunci\u00f3n II 2026",
+        "City": "Asunci\u00f3n",
+        "Country": "Paraguay",
+        "StartDateTime": "2026-09-27T00:00:00",
+        "EndDateTime": "2026-09-30T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3249",
+        "EventName": "China Smash 2026",
+        "City": "",
+        "Country": "China",
+        "StartDateTime": "2026-10-01T00:00:00",
+        "EndDateTime": "2026-10-11T00:00:00",
+        "EventType": "WTT Grand Smash"
+    },
+    {
+        "EventId": "3347",
+        "EventName": "WTT Youth Contender Cairo 2026",
+        "City": "Cairo",
+        "Country": "Egypt",
+        "StartDateTime": "2026-10-02T00:00:00",
+        "EndDateTime": "2026-10-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3368",
+        "EventName": "WTT Youth Contender Buenos Aires II 2026",
+        "City": "Buenos Aires",
+        "Country": "Argentina",
+        "StartDateTime": "2026-10-02T00:00:00",
+        "EndDateTime": "2026-10-05T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3283",
+        "EventName": "WTT Feeder Doha II 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-10-07T00:00:00",
+        "EndDateTime": "2026-10-11T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3394",
+        "EventName": " European Individual Championships Ljubljana 2026",
+        "City": "Otocec",
+        "Country": "Slovenia",
+        "StartDateTime": "2026-10-11T00:00:00",
+        "EndDateTime": "2026-10-18T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3336",
+        "EventName": "WTT Youth Contender Doha II 2026",
+        "City": "Doha",
+        "Country": "Qatar",
+        "StartDateTime": "2026-10-13T00:00:00",
+        "EndDateTime": "2026-10-16T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3340",
+        "EventName": "WTT Youth Contender Dubai 2026",
+        "City": "Dubai",
+        "Country": "United Arab Emirates",
+        "StartDateTime": "2026-10-18T00:00:00",
+        "EndDateTime": "2026-10-21T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3414",
+        "EventName": " ITTF-Americas Championships Lima 2026",
+        "City": "Lima",
+        "Country": "Peru",
+        "StartDateTime": "2026-10-18T00:00:00",
+        "EndDateTime": "2026-10-25T00:00:00",
+        "EventType": "Continental Championships"
+    },
+    {
+        "EventId": "3338",
+        "EventName": "WTT Youth Contender Lignano 2026",
+        "City": "Lignano Sabbiadoro",
+        "Country": "Italy",
+        "StartDateTime": "2026-10-21T00:00:00",
+        "EndDateTime": "2026-10-27T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3339",
+        "EventName": "WTT Youth Contender Senec 2026",
+        "City": "Senec",
+        "Country": "Slovak Republic",
+        "StartDateTime": "2026-10-21T00:00:00",
+        "EndDateTime": "2026-10-27T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3369",
+        "EventName": "WTT Youth Contender Chennai 2026",
+        "City": "Chennai",
+        "Country": "India",
+        "StartDateTime": "2026-10-23T00:00:00",
+        "EndDateTime": "2026-10-26T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3250",
+        "EventName": "WTT Champions Montpellier 2026",
+        "City": "Montpellier",
+        "Country": "France",
+        "StartDateTime": "2026-10-27T00:00:00",
+        "EndDateTime": "2026-11-01T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3376",
+        "EventName": "WTT Feeder Chennai 2026",
+        "City": "Chennai",
+        "Country": "India",
+        "StartDateTime": "2026-10-28T00:00:00",
+        "EndDateTime": "2026-11-01T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3344",
+        "EventName": "WTT Youth Contender Szombathely 2026",
+        "City": "Szombathely",
+        "Country": "Hungary",
+        "StartDateTime": "2026-10-29T00:00:00",
+        "EndDateTime": "2026-11-01T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3252",
+        "EventName": "WTT Champions Germany 2026",
+        "City": "",
+        "Country": "Germany",
+        "StartDateTime": "2026-11-03T00:00:00",
+        "EndDateTime": "2026-11-08T00:00:00",
+        "EventType": "WTT Champions"
+    },
+    {
+        "EventId": "3345",
+        "EventName": "WTT Youth Contender Podgorica 2026",
+        "City": "Podgorica",
+        "Country": "Montenegro",
+        "StartDateTime": "2026-11-03T00:00:00",
+        "EndDateTime": "2026-11-06T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3370",
+        "EventName": "WTT Feeder Vila Nova de Gaia 2026",
+        "City": "Vila Nova de Gaia",
+        "Country": "Portugal",
+        "StartDateTime": "2026-11-04T00:00:00",
+        "EndDateTime": "2026-11-08T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3346",
+        "EventName": "WTT Youth Star Contender Podgorica 2026 ",
+        "City": "Podgorica",
+        "Country": "Montenegro",
+        "StartDateTime": "2026-11-07T00:00:00",
+        "EndDateTime": "2026-11-09T00:00:00",
+        "EventType": "WTT Youth Star Contender"
+    },
+    {
+        "EventId": "3257",
+        "EventName": "WTT Contender Istanbul 2026",
+        "City": "Istanbul",
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-11-10T00:00:00",
+        "EndDateTime": "2026-11-15T00:00:00",
+        "EventType": "WTT Contender"
+    },
+    {
+        "EventId": "3395",
+        "EventName": "European U13 Championships Nevsehir 2026",
+        "City": null,
+        "Country": "T\u00fcrkiye",
+        "StartDateTime": "2026-11-11T00:00:00",
+        "EndDateTime": "2026-11-15T00:00:00",
+        "EventType": "Youth Continental Championships"
+    },
+    {
+        "EventId": "3469",
+        "EventName": "WTT Youth Contender Perth 2026",
+        "City": "Perth",
+        "Country": "Australia",
+        "StartDateTime": "2026-11-15T00:00:00",
+        "EndDateTime": "2026-11-18T00:00:00",
+        "EventType": "WTT Youth Contender"
+    },
+    {
+        "EventId": "3256",
+        "EventName": "WTT Star Contender Muscat 2026",
+        "City": "Muscat",
+        "Country": "Oman",
+        "StartDateTime": "2026-11-16T00:00:00",
+        "EndDateTime": "2026-11-21T00:00:00",
+        "EventType": "WTT Star Contender"
+    },
+    {
+        "EventId": "3377",
+        "EventName": "ITTF World Youth Championships 2026",
+        "City": "Manama",
+        "Country": "Bahrain",
+        "StartDateTime": "2026-11-21T00:00:00",
+        "EndDateTime": "2026-11-28T00:00:00",
+        "EventType": "World Youth Championships"
+    },
+    {
+        "EventId": "3352",
+        "EventName": "WTT Feeder D\u00fcsseldorf II 2026",
+        "City": "D\u00fcsseldorf",
+        "Country": "Germany",
+        "StartDateTime": "2026-11-23T00:00:00",
+        "EndDateTime": "2026-11-27T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3269",
+        "EventName": "WTT Feeder Gdansk 2026",
+        "City": "Gdansk",
+        "Country": "Poland",
+        "StartDateTime": "2026-11-28T00:00:00",
+        "EndDateTime": "2026-12-02T00:00:00",
+        "EventType": "WTT Feeder"
+    },
+    {
+        "EventId": "3378",
+        "EventName": "ITTF Mixed Team World Cup Chengdu 2026",
+        "City": "Chengdu",
+        "Country": "China",
+        "StartDateTime": "2026-11-29T00:00:00",
+        "EndDateTime": "2026-12-06T00:00:00",
+        "EventType": "World Mixed Team Championships"
+    },
+    {
+        "EventId": "3255",
+        "EventName": "WTT Finals Hong Kong 2026",
+        "City": null,
+        "Country": "Hong Kong, China",
+        "StartDateTime": "2026-12-08T00:00:00",
+        "EndDateTime": "2026-12-13T00:00:00",
+        "EventType": "WTT Finals"
+    }
+]
