@@ -37,3 +37,16 @@ jobs:
           git add last_message_state.txt || true
           git commit -m "Update state" || true
           git push
+
+
+
+
+
+          - name: Commit State (Save memory to prevent duplicates)
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git pull origin main --rebase  # <--- CRITICAL LINE: Fixes conflicts
+          git add processed_ids.json || true
+          git commit -m "Update processed match IDs" || true
+          git push origin main
