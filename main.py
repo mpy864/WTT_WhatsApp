@@ -14,7 +14,7 @@ FROM_WHATSAPP = os.getenv("TWILIO_WHATSAPP_FROM")
 TO_WHATSAPP = os.getenv("WHATSAPP_TO")            
 
 DB_FILE = "wtt_complete_database.json"
-HISTORY_FILE = "processed_ids.json" # New file to track IDs
+HISTORY_FILE = "processed_ids.json"
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
 
 def get_headers():
@@ -95,14 +95,12 @@ def fetch_and_filter(active_events, processed_ids):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
-                # CRITICAL: Skip if we have already processed this ID
+                # De-duplication check
                 if not match_id or match_id in processed_ids:
                     continue
                 
-                # If new, add to our list
                 new_ids.append(match_id)
 
-                # Extract info
                 sub_event = mc.get("subEventName", "Match")
                 raw_desc = mc.get("subEventDescription", "")
                 round_info = raw_desc.replace(sub_event + " - ", "").replace(sub_event, "").strip()
@@ -175,9 +173,8 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (ID-Based De-duplication)...")
+    print("🚀 Starting Bot (Safe Limit Mode)...")
     
-    # 1. Load Processed IDs
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
         try:
@@ -191,18 +188,22 @@ if __name__ == "__main__":
         print("⚠️ No events today.")
         sys.exit(0)
         
-    # 2. Get ONLY new matches
     messages, new_ids = fetch_and_filter(active_events, processed_ids)
     
     if messages:
-        print(f"⚡ Found {len(messages)} NEW matches!")
+        # === SAFETY LIMIT ===
+        # If there are more than 7 matches, only send the LATEST 7
+        if len(messages) > 7:
+            print(f"⚠️ Message too long ({len(messages)} matches). Truncating to last 7.")
+            messages = messages[-7:] # Take the last 7 items
+            
+        print(f"⚡ Sending {len(messages)} NEW matches!")
         final_message = "\n\n".join(messages)
         send_whatsapp(final_message)
         
-        # 3. Save updated IDs to file
+        # Save ALL processed IDs (even the ones we didn't send, to avoid spamming them next time)
         processed_ids.extend(new_ids)
-        # Keep file size small (last 200 matches)
-        processed_ids = processed_ids[-200:] 
+        processed_ids = processed_ids[-300:] 
         
         with open(HISTORY_FILE, 'w') as f:
             json.dump(processed_ids, f)
