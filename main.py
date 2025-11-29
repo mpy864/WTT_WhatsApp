@@ -8,17 +8,13 @@ from twilio.rest import Client
 # =========================
 # CONFIGURATION
 # =========================
-# GitHub Secrets (Must be set in your Repo Settings)
 TWILIO_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-FROM_WHATSAPP = os.getenv("TWILIO_WHATSAPP_FROM") # e.g., 'whatsapp:+14155238886'
-TO_WHATSAPP = os.getenv("WHATSAPP_TO")            # e.g., 'whatsapp:+919876543210'
+FROM_WHATSAPP = os.getenv("TWILIO_WHATSAPP_FROM") 
+TO_WHATSAPP = os.getenv("WHATSAPP_TO")            
 
-# Local Files (These must exist in your Repo)
 DB_FILE = "wtt_complete_database.json"
 STATE_FILE = "last_message_state.txt"
-
-# WTT Data Source
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
 
 def get_headers():
@@ -126,7 +122,6 @@ def fetch_latest_results(active_events):
                 raw_games = mc.get("resultsGameScores", "")
 
                 # === INDIA LOGIC ===
-                # Swap if India is Player 2 but not Player 1
                 swap_needed = ("IND" in p2_org) and ("IND" not in p1_org)
 
                 if swap_needed:
@@ -147,22 +142,22 @@ def fetch_latest_results(active_events):
                 except:
                     verb = "vs"
 
-                # Formatting
-                # Bold Indian Names for WhatsApp (*Name*)
-                if "IND" in primary_org: primary_name = f"*{primary_name}*"
-                if "IND" in opp_org: opp_name = f"*{opp_name}*"
+                # === FORMATTING UPDATE ===
+                # 1. Italics for Indian Names
+                if "IND" in primary_org: primary_name = f"_{primary_name}_"
+                if "IND" in opp_org: opp_name = f"_{opp_name}_"
                 
-                # Construct Message Block
+                # 2. Compact Message Block (No Emojis, Combined Lines)
                 msg_block = (
-                    f"_{event_name}_\n"
-                    f"🏆 {sub_event} | {clean_round}\n"
-                    f"{primary_name} ({primary_org}) {verb} {opp_name} ({opp_org})\n"
-                    f"🔢 {final_score} ({final_games})"
+                    f"*{event_name}*\n"
+                    f"*{sub_event} | {clean_round}*\n"
+                    f"{primary_name} ({primary_org}) {verb} {opp_name} ({opp_org}), {final_score} ({final_games})"
                 )
                 
-                # Check if India is involved to prioritize
+                # Prioritize India
                 if "IND" in primary_org or "IND" in opp_org:
-                    msg_block = "🇮🇳 *INDIA UPDATE* 🇮🇳\n" + msg_block
+                    # Optional: Add a small header if you want, or keep it strictly clean
+                    msg_block = "🇮🇳 " + msg_block 
 
                 messages.append(msg_block)
 
@@ -195,37 +190,28 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting GitHub WTT Bot...")
+    print("🚀 Starting GitHub WTT Bot (Format V2)...")
     
-    # 1. Get Active Events
     active_events = get_active_events()
     if not active_events:
         print("⚠️ No events today. Exiting.")
         sys.exit(0)
         
-    # 2. Fetch All Current Matches
     all_results = fetch_latest_results(active_events)
     if not all_results:
         print("⚠️ No match results found.")
         sys.exit(0)
         
-    # 3. Build Final Message String
-    # We join the last 5 matches to avoid spamming too much data
     final_message = "\n\n".join(all_results[-5:])
     
-    # 4. State Management (Prevent Duplicate Sends)
-    # We read the last sent message from file
     last_sent = ""
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, 'r') as f:
             last_sent = f.read()
             
-    # 5. Compare and Send
     if final_message != last_sent:
         print("⚡ New results detected! Sending WhatsApp...")
         send_whatsapp(final_message)
-        
-        # Save new state
         with open(STATE_FILE, 'w') as f:
             f.write(final_message)
     else:
