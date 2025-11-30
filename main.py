@@ -16,7 +16,10 @@ TO_WHATSAPP = os.getenv("WHATSAPP_TO")
 DB_FILE = "wtt_complete_database.json"
 HISTORY_FILE = "processed_ids.json"
 
+# API 1: Results (Past) - Static File (Fast & Safe)
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
+
+# API 2: Schedule (Future) - Dynamic API
 SCHEDULE_URL_TEMPLATE = "https://liveeventsapi.worldtabletennis.com/api/cms/GetEventSchedule/{eid}"
 
 def get_headers():
@@ -96,6 +99,7 @@ def fetch_results(active_events, processed_ids):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
+                # Deduplication Check
                 if not match_id or match_id in processed_ids:
                     continue
                 
@@ -116,7 +120,7 @@ def fetch_results(active_events, processed_ids):
                 raw_score = mc.get("resultOverallScores", "0-0")
                 raw_games = mc.get("resultsGameScores", "")
 
-                # India Logic
+                # === INDIA LOGIC (SWAP PLAYERS) ===
                 swap_needed = ("IND" in p2_org) and ("IND" not in p1_org)
                 if swap_needed:
                     primary_name = p2_name; primary_org = p2_org
@@ -135,6 +139,7 @@ def fetch_results(active_events, processed_ids):
                 except:
                     verb = "vs"
 
+                # Italicize Indian Names
                 if "IND" in primary_org: primary_name = f"_{primary_name}_"
                 if "IND" in opp_org: opp_name = f"_{opp_name}_"
                 
@@ -144,6 +149,7 @@ def fetch_results(active_events, processed_ids):
                     f"{primary_name} ({primary_org}) {verb} {opp_name} ({opp_org}), {final_score} ({final_games})"
                 )
                 
+                # Flag India matches
                 if "IND" in primary_org or "IND" in opp_org:
                     msg_block = "🇮🇳 " + msg_block 
 
@@ -155,21 +161,31 @@ def fetch_results(active_events, processed_ids):
     return new_messages, new_ids
 
 # =========================
-# 3. FETCH SCHEDULE (FUTURE) - REVISED
+# 3. FETCH SCHEDULE (FUTURE) - RECURSIVE FIX
 # =========================
-def extract_matches_from_data(data):
-    """Recursively search for the 'Unit' list in complex JSON structures"""
+def collect_all_matches(data):
+    """
+    Greedy function: Digs through EVERY layer of JSON to find matches.
+    Fixes the issue where schedule is hidden inside 'Competition' or nested lists.
+    """
+    matches = []
+    
     if isinstance(data, list):
-        # If list, verify if it's a list of matches OR a list of wrappers
-        if len(data) > 0 and "StartList" in data[0]:
-            return data # It's already the match list
         for item in data:
-            res = extract_matches_from_data(item)
-            if res: return res
-    if isinstance(data, dict):
-        if "Unit" in data: return data["Unit"]
-        if "Competition" in data: return extract_matches_from_data(data["Competition"])
-    return []
+            matches.extend(collect_all_matches(item))
+            
+    elif isinstance(data, dict):
+        # Is this a Match Object? (It has a StartList)
+        if "StartList" in data and "Code" in data:
+            matches.append(data)
+        
+        # Dig deeper into common WTT wrapper keys
+        if "Unit" in data:
+            matches.extend(collect_all_matches(data["Unit"]))
+        if "Competition" in data:
+            matches.extend(collect_all_matches(data["Competition"]))
+            
+    return matches
 
 def fetch_upcoming_schedule(active_events):
     schedule_lines = []
@@ -182,16 +198,14 @@ def fetch_upcoming_schedule(active_events):
             if r.status_code != 200: continue
             
             data = r.json()
-            matches = extract_matches_from_data(data)
-            print(f"DEBUG: Found {len(matches)} scheduled items")
+            matches = collect_all_matches(data)
+            print(f"DEBUG: GREEDY SEARCH FOUND {len(matches)} items")
 
             for m in matches:
-                # 1. Check if Finished (ActualEndDate must be empty OR null)
-                # Some APIs send "null", some send empty string
-                if m.get("ActualEndDate"): 
-                    continue
+                # Filter 1: Must NOT be finished
+                if m.get("ActualEndDate"): continue 
                 
-                # 2. Extract Players & Check for India
+                # Filter 2: Must involve INDIA
                 start_list = m.get("StartList", {}).get("Start", [])
                 has_india = False
                 players = []
@@ -199,18 +213,15 @@ def fetch_upcoming_schedule(active_events):
                 for p in start_list:
                     competitor = p.get("Competitor", {})
                     org = competitor.get("Organization", "")
-                    
-                    # Name extraction
                     desc = competitor.get("Description", {})
                     name = desc.get("TeamName")
                     if not name:
                         name = (desc.get("GivenName", "") + " " + desc.get("FamilyName", "")).strip()
-                    
                     if not name: name = "TBD"
 
                     if "IND" in org:
                         has_india = True
-                        name = f"_{name}_"
+                        name = f"_{name}_" # Italicize
                         
                     players.append(f"{name} ({org})")
                 
@@ -224,8 +235,6 @@ def fetch_upcoming_schedule(active_events):
                         time_str = "TBD"
                         
                     match_vs = " vs ".join(players)
-                    
-                    # Round Name
                     round_desc = m.get("ItemDescription", [{}])
                     round_name = round_desc[0].get("Value", "Match") if round_desc else "Match"
                     
@@ -239,13 +248,14 @@ def fetch_upcoming_schedule(active_events):
     return schedule_lines
 
 # =========================
-# 4. TWILIO SENDER
+# 4. TWILIO SENDER (MULTI-RECIPIENT)
 # =========================
 def send_whatsapp(body):
     if not TWILIO_SID or not TWILIO_TOKEN:
         print("❌ Twilio credentials missing.")
         return
 
+    # Split comma-separated numbers
     recipients = [num.strip() for num in TO_WHATSAPP.split(",") if num.strip()]
     client = Client(TWILIO_SID, TWILIO_TOKEN)
     
@@ -260,8 +270,9 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Final with DEBUG)...")
+    print("🚀 Starting Bot (Final Version)...")
     
+    # 1. Load History
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
         try:
@@ -275,26 +286,29 @@ if __name__ == "__main__":
         print("⚠️ No events today.")
         sys.exit(0)
         
+    # 2. Get Data
     messages, new_ids = fetch_results(active_events, processed_ids)
     upcoming_lines = fetch_upcoming_schedule(active_events)
     
+    # 3. Construct Message
     if messages:
+        # Safety Limit: Max 7 matches to prevent Twilio 400 Errors
         if len(messages) > 7:
             print(f"⚠️ Truncating message ({len(messages)} -> 7)")
             messages = messages[-7:]
             
         final_message = "\n\n".join(messages)
         
-        # Append Schedule
+        # Append Schedule if available
         if upcoming_lines:
-            print(f"DEBUG: Appending {len(upcoming_lines)} upcoming matches.")
             upcoming_lines.sort()
-            next_matches = "\n\n".join(upcoming_lines[:3]) # Show top 3 upcoming
+            next_matches = "\n\n".join(upcoming_lines[:3]) # Limit schedule to top 3
             final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
         
         print(f"⚡ Sending Update...")
         send_whatsapp(final_message)
         
+        # 4. Save History
         processed_ids.extend(new_ids)
         processed_ids = processed_ids[-300:] 
         with open(HISTORY_FILE, 'w') as f:
