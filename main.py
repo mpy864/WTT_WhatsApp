@@ -99,7 +99,6 @@ def fetch_results(active_events, processed_ids):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
-                # Deduplication
                 if not match_id or match_id in processed_ids:
                     continue
                 
@@ -139,7 +138,6 @@ def fetch_results(active_events, processed_ids):
                 except:
                     verb = "vs"
 
-                # Italics for Indian Names
                 if "IND" in primary_org: primary_name = f"_{primary_name}_"
                 if "IND" in opp_org: opp_name = f"_{opp_name}_"
                 
@@ -149,7 +147,6 @@ def fetch_results(active_events, processed_ids):
                     f"{primary_name} ({primary_org}) {verb} {opp_name} ({opp_org}), {final_score} ({final_games})"
                 )
                 
-                # Flag India matches
                 if "IND" in primary_org or "IND" in opp_org:
                     msg_block = "🇮🇳 " + msg_block 
 
@@ -174,15 +171,18 @@ def fetch_upcoming_schedule(active_events):
             
             data = r.json()
             
-            # --- ROBUST PARSING (Handle varied JSON structures) ---
-            root = data[0] if isinstance(data, list) and len(data) > 0 else data
+            # --- FIX: Iterate over ALL blocks, not just the first one ---
+            root_list = data if isinstance(data, list) else [data]
+            all_matches = []
             
-            # Look for matches in top level 'Unit' OR inside 'Competition'
-            matches = root.get("Unit", [])
-            if not matches:
-                matches = root.get("Competition", {}).get("Unit", [])
+            for item in root_list:
+                # Find matches in either 'Unit' or 'Competition -> Unit'
+                units = item.get("Unit", [])
+                if not units:
+                    units = item.get("Competition", {}).get("Unit", [])
+                all_matches.extend(units)
                 
-            for m in matches:
+            for m in all_matches:
                 # Filter 1: Must NOT be finished
                 if m.get("ActualEndDate"): continue
                 
@@ -230,7 +230,6 @@ def send_whatsapp(body):
         print("❌ Twilio credentials missing.")
         return
 
-    # Split comma-separated numbers
     recipients = [num.strip() for num in TO_WHATSAPP.split(",") if num.strip()]
     client = Client(TWILIO_SID, TWILIO_TOKEN)
     
@@ -245,9 +244,8 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Final Version)...")
+    print("🚀 Starting Bot (Final Version with Schedule Fix)...")
     
-    # 1. Load History
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
         try:
@@ -258,32 +256,26 @@ if __name__ == "__main__":
             
     active_events = get_active_events()
     if not active_events:
-        print("⚠️ No active events today.")
         sys.exit(0)
         
-    # 2. Get Data
     messages, new_ids = fetch_results(active_events, processed_ids)
     upcoming_lines = fetch_upcoming_schedule(active_events)
     
-    # 3. Construct Message
     if messages:
-        # Safety Limit: Max 7 matches to prevent errors
         if len(messages) > 7:
             print(f"⚠️ Truncating message ({len(messages)} -> 7)")
             messages = messages[-7:]
             
         final_message = "\n\n".join(messages)
         
-        # Add Schedule if available
         if upcoming_lines:
             upcoming_lines.sort()
-            next_matches = "\n\n".join(upcoming_lines[:3]) # Limit schedule to 3 items
+            next_matches = "\n\n".join(upcoming_lines[:3])
             final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
         
         print(f"⚡ Sending Update...")
         send_whatsapp(final_message)
         
-        # 4. Save History
         processed_ids.extend(new_ids)
         processed_ids = processed_ids[-300:] 
         with open(HISTORY_FILE, 'w') as f:
