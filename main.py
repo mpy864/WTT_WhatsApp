@@ -15,7 +15,12 @@ TO_WHATSAPP = os.getenv("WHATSAPP_TO")
 
 DB_FILE = "wtt_complete_database.json"
 HISTORY_FILE = "processed_ids.json"
+
+# API 1: Results (Past)
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
+
+# API 2: Schedule (Future)
+SCHEDULE_URL_TEMPLATE = "https://liveeventsapi.worldtabletennis.com/api/cms/GetEventSchedule/{eid}"
 
 def get_headers():
     return {
@@ -25,7 +30,7 @@ def get_headers():
     }
 
 # =========================
-# HELPER: SCORE FLIPPERS
+# HELPER FUNCTIONS
 # =========================
 def flip_score(s):
     if s and "-" in s:
@@ -76,9 +81,9 @@ def get_active_events():
         return {}
 
 # =========================
-# 2. FETCH & FILTER MATCHES
+# 2. FETCH RESULTS (PAST)
 # =========================
-def fetch_and_filter(active_events, processed_ids):
+def fetch_results(active_events, processed_ids):
     new_messages = []
     new_ids = []
     
@@ -90,12 +95,10 @@ def fetch_and_filter(active_events, processed_ids):
 
             matches = r.json()
             
-            # Process Oldest -> Newest
             for m in reversed(matches):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
-                # De-duplication check
                 if not match_id or match_id in processed_ids:
                     continue
                 
@@ -116,7 +119,6 @@ def fetch_and_filter(active_events, processed_ids):
                 raw_score = mc.get("resultOverallScores", "0-0")
                 raw_games = mc.get("resultsGameScores", "")
 
-                # India Logic
                 swap_needed = ("IND" in p2_org) and ("IND" not in p1_org)
                 if swap_needed:
                     primary_name = p2_name; primary_org = p2_org
@@ -155,25 +157,89 @@ def fetch_and_filter(active_events, processed_ids):
     return new_messages, new_ids
 
 # =========================
-# 3. TWILIO SENDER
+# 3. FETCH SCHEDULE (FUTURE)
+# =========================
+def fetch_upcoming_schedule(active_events):
+    schedule_lines = []
+    
+    for eid, event_name in active_events.items():
+        url = SCHEDULE_URL_TEMPLATE.format(eid=eid)
+        try:
+            r = requests.get(url, headers=get_headers(), timeout=15)
+            if r.status_code != 200: continue
+            
+            data = r.json()
+            # WTT structure: List -> [0] -> Unit -> List of Matches
+            matches = []
+            if isinstance(data, list) and len(data) > 0:
+                root = data[0]
+                matches = root.get("Unit", [])
+            elif isinstance(data, dict):
+                matches = data.get("Unit", [])
+                
+            for m in matches:
+                # Filter: Must NOT have ActualEndDate (means it's not finished)
+                if m.get("ActualEndDate"): continue
+                
+                # Filter: Must involve INDIA
+                start_list = m.get("StartList", {}).get("Start", [])
+                has_india = False
+                players = []
+                
+                for p in start_list:
+                    # Check Org
+                    org = p.get("Competitor", {}).get("Organization", "")
+                    name = p.get("Competitor", {}).get("Description", {}).get("TeamName", "Unknown")
+                    
+                    if "IND" in org:
+                        has_india = True
+                        name = f"_{name}_" # Italicize
+                        
+                    players.append(f"{name} ({org})")
+                
+                if has_india:
+                    # Get Time
+                    start_dt = m.get("StartDate", "") # "2025-11-29T19:30:00"
+                    try:
+                        dt = datetime.fromisoformat(start_dt)
+                        time_str = dt.strftime("%H:%M")
+                    except:
+                        time_str = "TBD"
+                        
+                    match_vs = " vs ".join(players)
+                    round_name = m.get("ItemDescription", [{}])[0].get("Value", "Match")
+                    
+                    line = f"⏰ {time_str} | {round_name}\n{match_vs}"
+                    schedule_lines.append(line)
+                    
+        except Exception:
+            pass
+            
+    return schedule_lines
+
+# =========================
+# 4. TWILIO SENDER
 # =========================
 def send_whatsapp(body):
     if not TWILIO_SID or not TWILIO_TOKEN:
         print("❌ Twilio credentials missing.")
         return
 
+    recipients = [num.strip() for num in TO_WHATSAPP.split(",") if num.strip()]
     client = Client(TWILIO_SID, TWILIO_TOKEN)
-    try:
-        msg = client.messages.create(from_=FROM_WHATSAPP, body=body, to=TO_WHATSAPP)
-        print(f"✅ Message Sent: {msg.sid}")
-    except Exception as e:
-        print(f"❌ Twilio Error: {e}")
+    
+    for number in recipients:
+        try:
+            msg = client.messages.create(from_=FROM_WHATSAPP, body=body, to=number)
+            print(f"✅ Sent to {number}: {msg.sid}")
+        except Exception as e:
+            print(f"❌ Failed to send to {number}: {e}")
 
 # =========================
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Safe Limit Mode)...")
+    print("🚀 Starting Bot (Results + Schedule)...")
     
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
@@ -185,28 +251,37 @@ if __name__ == "__main__":
             
     active_events = get_active_events()
     if not active_events:
-        print("⚠️ No events today.")
         sys.exit(0)
         
-    messages, new_ids = fetch_and_filter(active_events, processed_ids)
+    # 1. Get Results
+    messages, new_ids = fetch_results(active_events, processed_ids)
+    
+    # 2. Get Schedule (Only if we are sending results, or maybe strictly periodic?
+    # For now, let's attach schedule ONLY if there are new results to send
+    # This prevents spamming the schedule every 35 mins if nothing happened)
+    upcoming_lines = fetch_upcoming_schedule(active_events)
     
     if messages:
-        # === SAFETY LIMIT ===
-        # If there are more than 7 matches, only send the LATEST 7
-        if len(messages) > 7:
-            print(f"⚠️ Message too long ({len(messages)} matches). Truncating to last 7.")
-            messages = messages[-7:] # Take the last 7 items
+        if len(messages) > 6:
+            messages = messages[-6:]
             
-        print(f"⚡ Sending {len(messages)} NEW matches!")
         final_message = "\n\n".join(messages)
+        
+        # Add Schedule Block if exists
+        if upcoming_lines:
+            # Sort by time
+            upcoming_lines.sort()
+            # Take next 3 matches max to save space
+            next_matches = "\n\n".join(upcoming_lines[:3])
+            final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
+        
+        print(f"⚡ Sending Update...")
         send_whatsapp(final_message)
         
-        # Save ALL processed IDs (even the ones we didn't send, to avoid spamming them next time)
         processed_ids.extend(new_ids)
         processed_ids = processed_ids[-300:] 
-        
         with open(HISTORY_FILE, 'w') as f:
             json.dump(processed_ids, f)
-        print("💾 Updated history file.")
+        print("💾 History updated.")
     else:
-        print("💤 No new matches found.")
+        print("💤 No new matches.")
