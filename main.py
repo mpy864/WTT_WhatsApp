@@ -16,10 +16,7 @@ TO_WHATSAPP = os.getenv("WHATSAPP_TO")
 DB_FILE = "wtt_complete_database.json"
 HISTORY_FILE = "processed_ids.json"
 
-# API 1: Results (Past)
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
-
-# API 2: Schedule (Future)
 SCHEDULE_URL_TEMPLATE = "https://liveeventsapi.worldtabletennis.com/api/cms/GetEventSchedule/{eid}"
 
 def get_headers():
@@ -119,7 +116,7 @@ def fetch_results(active_events, processed_ids):
                 raw_score = mc.get("resultOverallScores", "0-0")
                 raw_games = mc.get("resultsGameScores", "")
 
-                # === INDIA LOGIC ===
+                # India Logic
                 swap_needed = ("IND" in p2_org) and ("IND" not in p1_org)
                 if swap_needed:
                     primary_name = p2_name; primary_org = p2_org
@@ -158,51 +155,67 @@ def fetch_results(active_events, processed_ids):
     return new_messages, new_ids
 
 # =========================
-# 3. FETCH SCHEDULE (FUTURE)
+# 3. FETCH SCHEDULE (FUTURE) - REVISED
 # =========================
+def extract_matches_from_data(data):
+    """Recursively search for the 'Unit' list in complex JSON structures"""
+    if isinstance(data, list):
+        # If list, verify if it's a list of matches OR a list of wrappers
+        if len(data) > 0 and "StartList" in data[0]:
+            return data # It's already the match list
+        for item in data:
+            res = extract_matches_from_data(item)
+            if res: return res
+    if isinstance(data, dict):
+        if "Unit" in data: return data["Unit"]
+        if "Competition" in data: return extract_matches_from_data(data["Competition"])
+    return []
+
 def fetch_upcoming_schedule(active_events):
     schedule_lines = []
     
     for eid, event_name in active_events.items():
+        print(f"DEBUG: Checking schedule for {eid}")
         url = SCHEDULE_URL_TEMPLATE.format(eid=eid)
         try:
             r = requests.get(url, headers=get_headers(), timeout=15)
             if r.status_code != 200: continue
             
             data = r.json()
-            
-            # --- FIX: Iterate over ALL blocks, not just the first one ---
-            root_list = data if isinstance(data, list) else [data]
-            all_matches = []
-            
-            for item in root_list:
-                # Find matches in either 'Unit' or 'Competition -> Unit'
-                units = item.get("Unit", [])
-                if not units:
-                    units = item.get("Competition", {}).get("Unit", [])
-                all_matches.extend(units)
+            matches = extract_matches_from_data(data)
+            print(f"DEBUG: Found {len(matches)} scheduled items")
+
+            for m in matches:
+                # 1. Check if Finished (ActualEndDate must be empty OR null)
+                # Some APIs send "null", some send empty string
+                if m.get("ActualEndDate"): 
+                    continue
                 
-            for m in all_matches:
-                # Filter 1: Must NOT be finished
-                if m.get("ActualEndDate"): continue
-                
-                # Filter 2: Must involve INDIA
+                # 2. Extract Players & Check for India
                 start_list = m.get("StartList", {}).get("Start", [])
                 has_india = False
                 players = []
                 
                 for p in start_list:
-                    org = p.get("Competitor", {}).get("Organization", "")
-                    desc = p.get("Competitor", {}).get("Description", {})
-                    name = desc.get("TeamName") or desc.get("GivenName", "") + " " + desc.get("FamilyName", "")
+                    competitor = p.get("Competitor", {})
+                    org = competitor.get("Organization", "")
                     
+                    # Name extraction
+                    desc = competitor.get("Description", {})
+                    name = desc.get("TeamName")
+                    if not name:
+                        name = (desc.get("GivenName", "") + " " + desc.get("FamilyName", "")).strip()
+                    
+                    if not name: name = "TBD"
+
                     if "IND" in org:
                         has_india = True
-                        name = f"_{name}_" # Italicize
+                        name = f"_{name}_"
                         
                     players.append(f"{name} ({org})")
                 
                 if has_india:
+                    print(f"DEBUG: Found Upcoming India match: {players}")
                     start_dt = m.get("StartDate", "")
                     try:
                         dt = datetime.fromisoformat(start_dt)
@@ -211,19 +224,22 @@ def fetch_upcoming_schedule(active_events):
                         time_str = "TBD"
                         
                     match_vs = " vs ".join(players)
+                    
+                    # Round Name
                     round_desc = m.get("ItemDescription", [{}])
                     round_name = round_desc[0].get("Value", "Match") if round_desc else "Match"
                     
                     line = f"⏰ {time_str} | {round_name}\n{match_vs}"
                     schedule_lines.append(line)
                     
-        except Exception:
+        except Exception as e:
+            print(f"DEBUG: Schedule Error: {e}")
             pass
             
     return schedule_lines
 
 # =========================
-# 4. TWILIO SENDER (MULTI-RECIPIENT)
+# 4. TWILIO SENDER
 # =========================
 def send_whatsapp(body):
     if not TWILIO_SID or not TWILIO_TOKEN:
@@ -244,7 +260,7 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Final Version with Schedule Fix)...")
+    print("🚀 Starting Bot (Final with DEBUG)...")
     
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
@@ -256,6 +272,7 @@ if __name__ == "__main__":
             
     active_events = get_active_events()
     if not active_events:
+        print("⚠️ No events today.")
         sys.exit(0)
         
     messages, new_ids = fetch_results(active_events, processed_ids)
@@ -268,9 +285,11 @@ if __name__ == "__main__":
             
         final_message = "\n\n".join(messages)
         
+        # Append Schedule
         if upcoming_lines:
+            print(f"DEBUG: Appending {len(upcoming_lines)} upcoming matches.")
             upcoming_lines.sort()
-            next_matches = "\n\n".join(upcoming_lines[:3])
+            next_matches = "\n\n".join(upcoming_lines[:3]) # Show top 3 upcoming
             final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
         
         print(f"⚡ Sending Update...")
