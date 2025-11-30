@@ -99,6 +99,7 @@ def fetch_results(active_events, processed_ids):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
+                # Deduplication
                 if not match_id or match_id in processed_ids:
                     continue
                 
@@ -119,6 +120,7 @@ def fetch_results(active_events, processed_ids):
                 raw_score = mc.get("resultOverallScores", "0-0")
                 raw_games = mc.get("resultsGameScores", "")
 
+                # === INDIA LOGIC ===
                 swap_needed = ("IND" in p2_org) and ("IND" not in p1_org)
                 if swap_needed:
                     primary_name = p2_name; primary_org = p2_org
@@ -137,6 +139,7 @@ def fetch_results(active_events, processed_ids):
                 except:
                     verb = "vs"
 
+                # Italics for Indian Names
                 if "IND" in primary_org: primary_name = f"_{primary_name}_"
                 if "IND" in opp_org: opp_name = f"_{opp_name}_"
                 
@@ -146,6 +149,7 @@ def fetch_results(active_events, processed_ids):
                     f"{primary_name} ({primary_org}) {verb} {opp_name} ({opp_org}), {final_score} ({final_games})"
                 )
                 
+                # Flag India matches
                 if "IND" in primary_org or "IND" in opp_org:
                     msg_block = "🇮🇳 " + msg_block 
 
@@ -169,27 +173,28 @@ def fetch_upcoming_schedule(active_events):
             if r.status_code != 200: continue
             
             data = r.json()
-            # WTT structure: List -> [0] -> Unit -> List of Matches
-            matches = []
-            if isinstance(data, list) and len(data) > 0:
-                root = data[0]
-                matches = root.get("Unit", [])
-            elif isinstance(data, dict):
-                matches = data.get("Unit", [])
+            
+            # --- ROBUST PARSING (Handle varied JSON structures) ---
+            root = data[0] if isinstance(data, list) and len(data) > 0 else data
+            
+            # Look for matches in top level 'Unit' OR inside 'Competition'
+            matches = root.get("Unit", [])
+            if not matches:
+                matches = root.get("Competition", {}).get("Unit", [])
                 
             for m in matches:
-                # Filter: Must NOT have ActualEndDate (means it's not finished)
+                # Filter 1: Must NOT be finished
                 if m.get("ActualEndDate"): continue
                 
-                # Filter: Must involve INDIA
+                # Filter 2: Must involve INDIA
                 start_list = m.get("StartList", {}).get("Start", [])
                 has_india = False
                 players = []
                 
                 for p in start_list:
-                    # Check Org
                     org = p.get("Competitor", {}).get("Organization", "")
-                    name = p.get("Competitor", {}).get("Description", {}).get("TeamName", "Unknown")
+                    desc = p.get("Competitor", {}).get("Description", {})
+                    name = desc.get("TeamName") or desc.get("GivenName", "") + " " + desc.get("FamilyName", "")
                     
                     if "IND" in org:
                         has_india = True
@@ -198,8 +203,7 @@ def fetch_upcoming_schedule(active_events):
                     players.append(f"{name} ({org})")
                 
                 if has_india:
-                    # Get Time
-                    start_dt = m.get("StartDate", "") # "2025-11-29T19:30:00"
+                    start_dt = m.get("StartDate", "")
                     try:
                         dt = datetime.fromisoformat(start_dt)
                         time_str = dt.strftime("%H:%M")
@@ -207,7 +211,8 @@ def fetch_upcoming_schedule(active_events):
                         time_str = "TBD"
                         
                     match_vs = " vs ".join(players)
-                    round_name = m.get("ItemDescription", [{}])[0].get("Value", "Match")
+                    round_desc = m.get("ItemDescription", [{}])
+                    round_name = round_desc[0].get("Value", "Match") if round_desc else "Match"
                     
                     line = f"⏰ {time_str} | {round_name}\n{match_vs}"
                     schedule_lines.append(line)
@@ -218,13 +223,14 @@ def fetch_upcoming_schedule(active_events):
     return schedule_lines
 
 # =========================
-# 4. TWILIO SENDER
+# 4. TWILIO SENDER (MULTI-RECIPIENT)
 # =========================
 def send_whatsapp(body):
     if not TWILIO_SID or not TWILIO_TOKEN:
         print("❌ Twilio credentials missing.")
         return
 
+    # Split comma-separated numbers
     recipients = [num.strip() for num in TO_WHATSAPP.split(",") if num.strip()]
     client = Client(TWILIO_SID, TWILIO_TOKEN)
     
@@ -239,8 +245,9 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Results + Schedule)...")
+    print("🚀 Starting Bot (Final Version)...")
     
+    # 1. Load History
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
         try:
@@ -251,33 +258,32 @@ if __name__ == "__main__":
             
     active_events = get_active_events()
     if not active_events:
+        print("⚠️ No active events today.")
         sys.exit(0)
         
-    # 1. Get Results
+    # 2. Get Data
     messages, new_ids = fetch_results(active_events, processed_ids)
-    
-    # 2. Get Schedule (Only if we are sending results, or maybe strictly periodic?
-    # For now, let's attach schedule ONLY if there are new results to send
-    # This prevents spamming the schedule every 35 mins if nothing happened)
     upcoming_lines = fetch_upcoming_schedule(active_events)
     
+    # 3. Construct Message
     if messages:
-        if len(messages) > 6:
-            messages = messages[-6:]
+        # Safety Limit: Max 7 matches to prevent errors
+        if len(messages) > 7:
+            print(f"⚠️ Truncating message ({len(messages)} -> 7)")
+            messages = messages[-7:]
             
         final_message = "\n\n".join(messages)
         
-        # Add Schedule Block if exists
+        # Add Schedule if available
         if upcoming_lines:
-            # Sort by time
             upcoming_lines.sort()
-            # Take next 3 matches max to save space
-            next_matches = "\n\n".join(upcoming_lines[:3])
+            next_matches = "\n\n".join(upcoming_lines[:3]) # Limit schedule to 3 items
             final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
         
         print(f"⚡ Sending Update...")
         send_whatsapp(final_message)
         
+        # 4. Save History
         processed_ids.extend(new_ids)
         processed_ids = processed_ids[-300:] 
         with open(HISTORY_FILE, 'w') as f:
