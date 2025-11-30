@@ -16,11 +16,8 @@ TO_WHATSAPP = os.getenv("WHATSAPP_TO")
 DB_FILE = "wtt_complete_database.json"
 HISTORY_FILE = "processed_ids.json"
 
-# API 1: Results (Past) - Static File (Fast & Safe)
+# API: Results (Fast & Safe)
 SCORE_URL_TEMPLATE = "https://wtt-web-frontdoor-withoutcache-cqakg0andqf5hchn.a01.azurefd.net/websitestaticapifiles/{eid}/{eid}_take_10_official_results.json"
-
-# API 2: Schedule (Future) - Dynamic API
-SCHEDULE_URL_TEMPLATE = "https://liveeventsapi.worldtabletennis.com/api/cms/GetEventSchedule/{eid}"
 
 def get_headers():
     return {
@@ -81,7 +78,7 @@ def get_active_events():
         return {}
 
 # =========================
-# 2. FETCH RESULTS (PAST)
+# 2. FETCH RESULTS
 # =========================
 def fetch_results(active_events, processed_ids):
     new_messages = []
@@ -99,7 +96,7 @@ def fetch_results(active_events, processed_ids):
                 mc = m.get("match_card", {})
                 match_id = mc.get("documentCode")
                 
-                # Deduplication Check
+                # Deduplication
                 if not match_id or match_id in processed_ids:
                     continue
                 
@@ -107,6 +104,8 @@ def fetch_results(active_events, processed_ids):
 
                 sub_event = mc.get("subEventName", "Match")
                 raw_desc = mc.get("subEventDescription", "")
+                
+                # Round cleaning
                 round_info = raw_desc.replace(sub_event + " - ", "").replace(sub_event, "").strip()
                 if not round_info: round_info = raw_desc
                 clean_round = round_info.split(" - Match")[0]
@@ -161,101 +160,13 @@ def fetch_results(active_events, processed_ids):
     return new_messages, new_ids
 
 # =========================
-# 3. FETCH SCHEDULE (FUTURE) - RECURSIVE FIX
-# =========================
-def collect_all_matches(data):
-    """
-    Greedy function: Digs through EVERY layer of JSON to find matches.
-    Fixes the issue where schedule is hidden inside 'Competition' or nested lists.
-    """
-    matches = []
-    
-    if isinstance(data, list):
-        for item in data:
-            matches.extend(collect_all_matches(item))
-            
-    elif isinstance(data, dict):
-        # Is this a Match Object? (It has a StartList)
-        if "StartList" in data and "Code" in data:
-            matches.append(data)
-        
-        # Dig deeper into common WTT wrapper keys
-        if "Unit" in data:
-            matches.extend(collect_all_matches(data["Unit"]))
-        if "Competition" in data:
-            matches.extend(collect_all_matches(data["Competition"]))
-            
-    return matches
-
-def fetch_upcoming_schedule(active_events):
-    schedule_lines = []
-    
-    for eid, event_name in active_events.items():
-        print(f"DEBUG: Checking schedule for {eid}")
-        url = SCHEDULE_URL_TEMPLATE.format(eid=eid)
-        try:
-            r = requests.get(url, headers=get_headers(), timeout=15)
-            if r.status_code != 200: continue
-            
-            data = r.json()
-            matches = collect_all_matches(data)
-            print(f"DEBUG: GREEDY SEARCH FOUND {len(matches)} items")
-
-            for m in matches:
-                # Filter 1: Must NOT be finished
-                if m.get("ActualEndDate"): continue 
-                
-                # Filter 2: Must involve INDIA
-                start_list = m.get("StartList", {}).get("Start", [])
-                has_india = False
-                players = []
-                
-                for p in start_list:
-                    competitor = p.get("Competitor", {})
-                    org = competitor.get("Organization", "")
-                    desc = competitor.get("Description", {})
-                    name = desc.get("TeamName")
-                    if not name:
-                        name = (desc.get("GivenName", "") + " " + desc.get("FamilyName", "")).strip()
-                    if not name: name = "TBD"
-
-                    if "IND" in org:
-                        has_india = True
-                        name = f"_{name}_" # Italicize
-                        
-                    players.append(f"{name} ({org})")
-                
-                if has_india:
-                    print(f"DEBUG: Found Upcoming India match: {players}")
-                    start_dt = m.get("StartDate", "")
-                    try:
-                        dt = datetime.fromisoformat(start_dt)
-                        time_str = dt.strftime("%H:%M")
-                    except:
-                        time_str = "TBD"
-                        
-                    match_vs = " vs ".join(players)
-                    round_desc = m.get("ItemDescription", [{}])
-                    round_name = round_desc[0].get("Value", "Match") if round_desc else "Match"
-                    
-                    line = f"⏰ {time_str} | {round_name}\n{match_vs}"
-                    schedule_lines.append(line)
-                    
-        except Exception as e:
-            print(f"DEBUG: Schedule Error: {e}")
-            pass
-            
-    return schedule_lines
-
-# =========================
-# 4. TWILIO SENDER (MULTI-RECIPIENT)
+# 3. TWILIO SENDER
 # =========================
 def send_whatsapp(body):
     if not TWILIO_SID or not TWILIO_TOKEN:
         print("❌ Twilio credentials missing.")
         return
 
-    # Split comma-separated numbers
     recipients = [num.strip() for num in TO_WHATSAPP.split(",") if num.strip()]
     client = Client(TWILIO_SID, TWILIO_TOKEN)
     
@@ -270,9 +181,8 @@ def send_whatsapp(body):
 # MAIN
 # =========================
 if __name__ == "__main__":
-    print("🚀 Starting Bot (Final Version)...")
+    print("🚀 Starting Bot (Results Only Mode)...")
     
-    # 1. Load History
     processed_ids = []
     if os.path.exists(HISTORY_FILE):
         try:
@@ -286,29 +196,19 @@ if __name__ == "__main__":
         print("⚠️ No events today.")
         sys.exit(0)
         
-    # 2. Get Data
     messages, new_ids = fetch_results(active_events, processed_ids)
-    upcoming_lines = fetch_upcoming_schedule(active_events)
     
-    # 3. Construct Message
     if messages:
-        # Safety Limit: Max 7 matches to prevent Twilio 400 Errors
+        # Safety Limit: Max 7 matches
         if len(messages) > 7:
             print(f"⚠️ Truncating message ({len(messages)} -> 7)")
             messages = messages[-7:]
             
         final_message = "\n\n".join(messages)
         
-        # Append Schedule if available
-        if upcoming_lines:
-            upcoming_lines.sort()
-            next_matches = "\n\n".join(upcoming_lines[:3]) # Limit schedule to top 3
-            final_message += "\n\n➖➖➖➖➖➖➖➖➖➖\n🇮🇳 *UPCOMING INDIA MATCHES*\n" + next_matches
-        
         print(f"⚡ Sending Update...")
         send_whatsapp(final_message)
         
-        # 4. Save History
         processed_ids.extend(new_ids)
         processed_ids = processed_ids[-300:] 
         with open(HISTORY_FILE, 'w') as f:
